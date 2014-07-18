@@ -9,6 +9,6 @@ class Lesson < ActiveRecord::Base
 	end
 
 	def video_params
-		"?rel=0&fs=1&autohide=0&showinfo=1"
+		"?rel=0&fs=1&autohide=0&showinfo=0"
 	end
 end
