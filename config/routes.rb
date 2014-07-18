@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  resources :subjects
+  resources :subjects do
+  	resources :lessons
+  end
 end
