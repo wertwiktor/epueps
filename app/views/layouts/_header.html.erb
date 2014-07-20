@@ -1,11 +1,14 @@
-<header>
-	<div id="logo"><%= link_to "ePUEPS", '#' %></div>
+<header id = "page-header">
+	<div class = "container">
+		<div id="logo"><%= link_to "ePUEPS", root_path %></div>
 
-	<nav id="main-menu">
-		<ul>
-			<li><%= link_to "Wszystkie kusy", '#' %></li>
-			<li><%= link_to "O ePUPS", '#' %></li>
-			<li><%= link_to "Zaloguj się", '#' %></li>
-		</ul>
-	</nav>
+		<nav id="main-menu">
+			<ul>
+				<li><%= link_to "Wszystkie kursy", '#' %></li>
+				<li><%= link_to "Wszystkie przedmioty", subjects_path %></li>
+				<li><%= link_to "O platformie", '#' %></li>
+				<li><%= link_to "Zaloguj się", '#' %></li>
+			</ul>
+		</nav>
+	</div>
 </header>

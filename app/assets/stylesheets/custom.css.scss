@@ -1,0 +1,123 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100&subset=latin,latin-ext);
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300&subset=latin,latin-ext);
+
+
+$primary: #eb8a45;
+$secondary: #5a7aad;
+
+$header-bg: #1f1f1f;
+$header-height: 4rem;
+
+/* ******* */
+/* GENERAL */
+/* ******* */
+
+html, body, ul, h1, h2, h3, h4, h5, h6{
+	margin: 0;
+	padding: 0;
+
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.container {
+	width: 90%;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+/* *************** */
+/* COMMON ELEMENTS */
+/* *************** */
+
+#page-header {
+	
+
+	background: $header-bg;
+	color: #fff;
+	height: $header-height;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		transition: 0.2s;
+
+		&:hover {
+			color: darken(#fff, 25%);
+		}
+	}	
+
+	ul {
+		list-style: none;
+	}
+
+	li {
+		display: inline;
+		margin: 0 0.7rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	#logo {
+		line-height: $header-height;
+		display: block;
+		float: left;
+
+		font-family: 'Roboto Slab', serif;
+		font-size: 1.2rem;
+		font-weight: 400;
+
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+
+	nav {
+		display: inline;
+		text-align: right;
+		line-height: $header-height;
+
+		font-size: 0.9rem;
+	}
+}
+
+/* ******* */
+/* BUTTONS */ 
+/* ******* */
+
+.button {
+	display: inline-block;
+	padding: 0.5rem 0;
+	text-align: center;
+	color: #fff;
+	text-decoration: none;
+	width: 12rem;
+
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+	font-size: 0.85rem;
+
+	transition: 0.3s;
+}
+.button-primary {
+	background: $primary;
+	border-bottom: 5px solid darken($primary, 12%);
+
+	&:hover {
+		background: darken($primary, 5%);
+	}
+}
+.button-secondary {
+	background: $secondary;
+	border-bottom: 5px solid darken($secondary, 12%);
+
+	&:hover {
+		background: darken($secondary, 5%);
+	}
+}

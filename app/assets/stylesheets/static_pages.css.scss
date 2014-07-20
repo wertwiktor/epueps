@@ -1,3 +1,29 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* ******** */
+/* HOMEPAGE */
+/* ******** */
+
+#splash {
+	background-image: image-url("splash-bg.jpg");
+	background-size: cover;
+	background-position: center;
+
+
+	color: #fff;
+
+	h1 {
+		font-size: 3rem;
+		font-weight: 100;
+
+		padding-top: 5rem;
+		padding-bottom: 2rem;
+	}
+
+	.button {
+		margin-bottom: 5rem;
+		margin-right: 1rem;
+	}
+}
