@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  resources :subjects do
-  	resources :lessons
+  resources :subjects, shallow: true do
+  	resources :lessons, except: :index
   end
 end

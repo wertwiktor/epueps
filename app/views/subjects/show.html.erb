@@ -1,0 +1,12 @@
+<h1>
+	<%= @subject.name %>	
+</h1>
+<section class="description">
+	<h2>Opis przedmiotu </h2>
+	<%= @subject.description %>
+</section>
+
+<section class="lessons">
+	<h2><%= link_to "Lekcje", subject_lessons_path(@subject) %></h2>
+	<%= render @lessons %>
+</section>

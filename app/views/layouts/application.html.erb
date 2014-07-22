@@ -12,5 +12,13 @@
 
 <%= yield %>
 
+<% unless @splash %>
+	</div>
+<% end %>
+
+<div class="params-debug">
+	<%= debug(params) %>
+</div>
+
 </body>
 </html>

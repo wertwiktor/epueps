@@ -1,5 +1,5 @@
 <article class="subject">
-	<h2><%= subject.name %></h2>
+	<h2><%= link_to subject.name, subject_path(subject) %></h2>
 	<section class = "description">
 		<%= subject.description %>
 	</section>	
