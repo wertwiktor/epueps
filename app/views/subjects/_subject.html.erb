@@ -1,5 +1,6 @@
 <article class="subject">
 	<h2><%= link_to subject.name, subject_path(subject) %></h2>
+	<%= image_tag subject.image_src %>
 	<section class = "description">
 		<%= subject.description %>
 	</section>	
