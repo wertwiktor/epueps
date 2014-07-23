@@ -16,7 +16,11 @@
 		<h1>Dostępne kursy</h1>
 		<div class = "container">
 			<%= render @subjects %>
+
 		</div>
+		<%= link_to "Wszystkie kursy", 
+								subjects_path,
+								class: "button button-secondary" %>
 	</section>
 
 	<section id="home-articles">
