@@ -103,12 +103,15 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	color: #fff;
 	text-decoration: none;
 	width: 12rem;
+	border: 0;
 
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;
 	font-size: 0.85rem;
 
 	transition: 0.3s;
+
+	cursor: pointer;
 }
 .button-primary {
 	background: $primary;
@@ -125,4 +128,23 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	&:hover {
 		background: darken($secondary, 5%);
 	}
+}
+
+.alert {
+	height: 3em;
+	line-height: 3em;
+	margin: 2em 0;
+	padding: 0 2em;
+
+	.close-div {
+		width: 1em;
+		height: 1em;
+		display: block;
+		float: right;
+		cursor: pointer;
+	}
+}
+.alert-success {
+	background: #9EFA89;
+	border: 1px solid darken(#9EFA89, 10%);
 }

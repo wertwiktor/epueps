@@ -8,17 +8,17 @@
 </head>
 <body>
 
-<%= render 'layouts/header' %>
+	<%= render 'layouts/header' %>
 
-<%= yield %>
+	<%= yield %>
 
-<% unless @splash %>
+	<% unless @splash %>
+		</div>
+	<% end %>
+
+	<div class="params-debug">
+		<%= debug(params) %>
 	</div>
-<% end %>
-
-<div class="params-debug">
-	<%= debug(params) %>
-</div>
 
 </body>
 </html>
