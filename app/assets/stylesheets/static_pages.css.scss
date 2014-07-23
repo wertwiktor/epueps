@@ -6,11 +6,12 @@
 /* HOMEPAGE */
 /* ******** */
 
-#splash {
+$text-color: #575757;
+
+#home-splash {
 	background-image: image-url("splash-bg.jpg");
 	background-size: cover;
 	background-position: center;
-
 
 	color: #fff;
 
@@ -25,5 +26,77 @@
 	.button {
 		margin-bottom: 5rem;
 		margin-right: 1rem;
+	}
+}
+
+#home-subjects {
+	background: #E5EBEC;
+	padding: 2em 0;
+	padding-bottom: 3em;
+
+	h1 {
+		font-size: 2em;
+		margin-bottom: 1em;
+		color: $text-color;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.description {
+		margin-bottom: 1em;
+	}
+}
+#home-subjects>.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.subject {
+		background: #fff;
+		padding: 1em 1.5em;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		box-shadow: 0px 0px 1px #797979;
+		border-radius: 3px;
+
+		position: relative;
+		padding-bottom: 4em;
+		margin-right: 2em;
+
+		h2, img {
+			margin-bottom: 0.75em;
+		}
+
+		.button {
+			margin: 0 auto;
+			position: absolute;
+
+			width: 80%;
+			height: 2em;
+			line-height: 2em;
+
+			left: 10%;
+			bottom: 1em;
+			color: #fff;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+		//width: 30%;
+		
+	}
+}
+
+#home-articles {
+	padding-top: 2em;
+
+	h1 {
+		font-size: 2em;
+		margin-bottom: 1em;
 	}
 }

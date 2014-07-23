@@ -6,6 +6,8 @@
 $primary: #eb8a45;
 $secondary: #5a7aad;
 
+$text-color: #575757;
+
 $header-bg: #1f1f1f;
 $header-height: 4rem;
 
@@ -16,6 +18,10 @@ $header-height: 4rem;
 .params-debug {
 	margin-top: 5em;
 	border: 1px solid #1D1D1D;
+}
+
+body {
+	color: $text-color;
 }
 
 html, body, ul, h1, h2, h3, h4, h5, h6{
@@ -30,6 +36,10 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	width: 90%;
 	max-width: 1280px;
 	margin: 0 auto;
+}
+
+.page-content {
+	text-align: center;
 }
 
 /* *************** */
@@ -104,6 +114,8 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	text-decoration: none;
 	width: 12rem;
 	border: 0;
+	border-radius: 3px;
+
 
 	font-family: 'Roboto Slab', serif;
 	font-weight: 400;

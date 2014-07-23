@@ -1,6 +1,8 @@
 class Subject < ActiveRecord::Base
 	has_many :lessons, dependent: :destroy
 
+	scope :most_popular, -> { order('popularity DESC') } 
+
 
 	def image_src
 		if self.image_name
@@ -8,5 +10,9 @@ class Subject < ActiveRecord::Base
 		else
 			"subjects/subject-#{self.id}.jpg"
 		end
+	end
+
+	def increase_popularity
+		self.popularity += 1
 	end
 end
