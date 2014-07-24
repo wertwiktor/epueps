@@ -1,9 +1,20 @@
 class Lesson < ActiveRecord::Base
 	belongs_to :subject
 
-	# TODO: Model validation & spec
-	validates :subject_id, presence: true
+	VIDEO_LINK_REGEX = /\A(https?:\/\/)?w{3}?\.?youtube\.com\/watch\?v=[a-z0-9]+\z/i 
 
+	# TODO: Model validation & spec
+	validates :subject_id, 	presence: true
+	validates :name,				presence:  
+													{ message: "Nazwa nie może być pusta" }
+	validates :description, presence: 
+													{ message: "Opis nie może być pusty" }
+	validates :video_link, 	presence:
+													{ message: "Link do filmu nie może być pusty" },
+													format: 
+													{ with: VIDEO_LINK_REGEX,
+														message: "Niepoprawny format"
+													}
 
 
 	# TODO: Add video_id function which can deal with links 

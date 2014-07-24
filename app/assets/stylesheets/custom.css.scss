@@ -4,7 +4,7 @@
 
 
 $primary: #eb8a45;
-$secondary: #5a7aad;
+$secondary: #008F9C;
 
 $text-color: #575757;
 
@@ -141,6 +141,8 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 		background: darken($secondary, 5%);
 	}
 }
+
+// TODO: alert-error, alert-warning
 
 .alert {
 	height: 3em;

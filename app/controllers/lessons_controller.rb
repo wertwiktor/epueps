@@ -19,6 +19,7 @@ class LessonsController < ApplicationController
 			redirect_to @subject
 		else
 			flash[:error] = "Wystąpił błąd, lekcja nie została dodana"
+			render 'new'
 		end
 	end
 
