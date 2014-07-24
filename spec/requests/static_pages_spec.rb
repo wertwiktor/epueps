@@ -5,6 +5,8 @@ describe "StaticPages" do
 	subject { page }
   
   describe "Home page" do
+  	let!(:subject1) { FactoryGirl.create(:subject) }
+
   	before { visit root_path }
 
   	it { should have_title "Platforma ePUEPS" }
@@ -13,5 +15,10 @@ describe "StaticPages" do
 
   	it { should have_selector("h1", text: "Dostępne kursy") }
   	it { should have_link "Wszystkie kursy", href: subjects_path }
+
+  	it { should have_selector("h2", text: subject1.name) }
+  	it { should have_content subject1.description }
+  	it { should have_selector("img") }
+  	it { should have_link "Zacznij kurs", subject_path(subject1) }
   end
 end
