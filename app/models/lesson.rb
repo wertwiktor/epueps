@@ -3,7 +3,6 @@ class Lesson < ActiveRecord::Base
 
 	VIDEO_LINK_REGEX = /\A(https?:\/\/)?w{3}?\.?youtube\.com\/watch\?v=[a-z0-9]+\z/i 
 
-	# TODO: Model validation & spec
 	validates :subject_id, 	presence: true
 	validates :name,				presence:  
 													{ message: "Nazwa nie może być pusta" }
