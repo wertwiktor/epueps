@@ -1,6 +1,7 @@
 class Lesson < ActiveRecord::Base
 	belongs_to :subject
 
+	# TODO: Model validation & spec
 	validates :subject_id, presence: true
 
 

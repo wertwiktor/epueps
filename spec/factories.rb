@@ -3,6 +3,7 @@ FactoryGirl.define do
 		name 					"Subject"
 		image_name 		"subject.jpg"
 		description		"Lorem ipsum"
+		popularity		0
 	end
 
 	factory :lesson do

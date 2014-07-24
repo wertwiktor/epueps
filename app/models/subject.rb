@@ -1,6 +1,8 @@
 class Subject < ActiveRecord::Base
 	has_many :lessons, dependent: :destroy
 
+	# TODO: Model validation & spec
+
 	scope :most_popular, -> { order('popularity DESC') } 
 
 
