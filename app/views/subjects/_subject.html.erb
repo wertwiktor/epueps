@@ -1,5 +1,7 @@
 <article class="subject">
-	<h2><%= link_to subject.name, subject_path(subject) %></h2>
+	<!-- TODO: Add link to subject -->
+	<!-- <h2><%= link_to subject.name, subject_path(subject) %></h2> -->
+	<h2><%= subject.name %></h2>
 	<%= image_tag subject.image_src %>
 	<section class = "description">
 		<!-- TODO: Move this to subject_description helper -->
@@ -8,5 +10,6 @@
 									separatior: ' '  %>
 	</section>	
 
-	<%= link_to "Zacznij kurs", subject, class: "button button-primary" %>
+	<!-- TODO: Add link path -->
+	<%= link_to "Zacznij kurs", '#', class: "button button-primary" %>
 </article>

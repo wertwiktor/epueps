@@ -8,7 +8,7 @@ $secondary: #008F9C;
 
 $text-color: #575757;
 
-$header-bg: #1f1f1f;
+$header-bg: #2C3B4B;
 $header-height: 4rem;
 
 /* ******* */
@@ -20,8 +20,14 @@ $header-height: 4rem;
 	border: 1px solid #1D1D1D;
 }
 
+.center {
+	text-align: center;
+}
+
+
 body {
 	color: $text-color;
+	background: #E5EBEC;
 }
 
 html, body, ul, h1, h2, h3, h4, h5, h6{
@@ -32,6 +38,10 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	font-weight: 300;
 }
 
+
+h1 {
+	margin-bottom: 2rem;
+}
 .container {
 	width: 90%;
 	max-width: 1280px;
@@ -52,6 +62,7 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	background: $header-bg;
 	color: #fff;
 	height: $header-height;
+	margin-bottom: 2em;
 
 	a {
 		color: inherit;
@@ -171,3 +182,43 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	background: rgba(248, 236, 141, 0.73);
 	border: 1px solid darken(rgba(248, 236, 141, 0.73), 10%);
 }
+
+
+.subject {
+	background: #fff;
+	padding: 1em 1.5em;
+	display: flex;
+	flex-direction: column;
+	
+	box-shadow: 0px 0px 1px #797979;
+	border-radius: 3px;
+
+	position: relative;
+	padding-bottom: 4em;
+	
+
+	img {
+		height: 200px;
+	}
+
+	h2, img {
+		margin-bottom: 0.75em;
+	}
+
+	.button {
+		margin: 0 auto;
+		position: absolute;
+
+		width: 80%;
+		height: 2em;
+		line-height: 2em;
+
+		left: 10%;
+		bottom: 1em;
+		color: #fff !important;
+	}
+
+	
+		//width: 30%;
+		
+	}

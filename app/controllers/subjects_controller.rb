@@ -1,7 +1,11 @@
 class SubjectsController < ApplicationController
 
   def index
-  	@subjects = Subject.all
+  	@subjects_most_recent = Subject.most_recent
+    @subjects_most_popular = Subject.most_popular
+
+    # TODO: Load this setting from cookies
+    @subjects = @subjects_most_recent
   end
 
   def show

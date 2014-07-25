@@ -3,8 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-article.subject {
-	img {
-		height: 200px;
+
+
+.subject-index {
+	text-align: center;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.subject {
+		box-sizing: border-box;
+		width: 31.5%;
+		margin-bottom: 2em;
+
+		border: 0;
+
+		.description {
+			margin-bottom: 1em;
+		}
+
+		img {
+			height: 200px;
+		}
 	}
 }
