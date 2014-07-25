@@ -5,7 +5,13 @@ class SubjectsController < ApplicationController
     @subjects_most_popular = Subject.most_popular
 
     # TODO: Load this setting from cookies
-    @subjects = @subjects_most_recent
+    if subjects_scope == "most_recent"
+      @subjects = @subjects_most_recent
+    else
+      @subjects = @subjects_most_popular
+    end
+
+
   end
 
   def show
@@ -18,4 +24,11 @@ class SubjectsController < ApplicationController
   		format.html
   	end
   end
+
+
+  private
+
+    def subjects_scope
+      cookies[:subject_scope] || "most_recent"
+    end
 end

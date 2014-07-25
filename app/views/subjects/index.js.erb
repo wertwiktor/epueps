@@ -1,0 +1,6 @@
+$("#subjects_most_popular").click(function(event) {
+
+	document.cookie="subject_scope=most_popular";
+});
+
+$(".subject-index").html("<%= j render @subjects %>");
