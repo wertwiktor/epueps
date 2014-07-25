@@ -9,5 +9,9 @@ class SubjectsController < ApplicationController
   	@lessons = @subject.lessons.all
 
   	@subject.update_attribute(:popularity, @subject.popularity + 1)
+
+  	respond_to do |format|
+  		format.html
+  	end
   end
 end

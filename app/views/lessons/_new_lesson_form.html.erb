@@ -1,0 +1,7 @@
+<%= simple_form_for [@subject, @lesson] do |f| %>
+	<%= f.input :name, 				label: "Nazwa" %>
+	<%= f.input :video_link, 	label: "Adres filmu" %>
+	<%= f.input :description,	label: "Opis" %>
+	<%= f.submit 	'Dodaj lekcję',
+								class: 'button button-primary' %>
+<% end %>

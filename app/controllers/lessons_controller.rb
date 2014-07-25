@@ -18,7 +18,7 @@ class LessonsController < ApplicationController
 			flash[:success] = "Dodano lekcję"
 			redirect_to @subject
 		else
-			flash[:error] = "Wystąpił błąd, lekcja nie została dodana"
+			flash[:error] = "Wystąpił błąd" 
 			render 'new'
 		end
 	end
@@ -28,4 +28,5 @@ class LessonsController < ApplicationController
 	def lesson_params
 		params.require(:lesson).permit(:name, :video_link, :description)
 	end
+
 end
