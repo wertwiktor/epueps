@@ -15,4 +15,9 @@
 //= require turbolinks
 //= require_tree .
 
-// TODO: close_button function
+$(document).ready(function() {
+	$(".close-div").click(function() {
+		console.log("close-div");
+		$(this).parent().fadeOut();
+	});
+});

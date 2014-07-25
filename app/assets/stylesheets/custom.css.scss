@@ -142,7 +142,6 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	}
 }
 
-// TODO: alert-error, alert-warning
 
 // TODO: http://tympanus.net/Development/NotificationStyles/bar-slidetop.html for ajax reponses
 
@@ -161,6 +160,14 @@ html, body, ul, h1, h2, h3, h4, h5, h6{
 	}
 }
 .alert-success {
-	background: #9EFA89;
-	border: 1px solid darken(#9EFA89, 10%);
+	background: rgba(101, 238, 94, 0.35);
+	border: 1px solid darken(rgba(101, 238, 94, 0.35), 10%);
+}
+.alert-error {
+	background: rgba(253, 30, 0, 0.28);
+	border: 1px solid rgba(206, 79, 61, 0.15)
+}
+.alert-warning {
+	background: rgba(248, 236, 141, 0.73);
+	border: 1px solid darken(rgba(248, 236, 141, 0.73), 10%);
 }
