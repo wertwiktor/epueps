@@ -1,9 +1,10 @@
 class Subject < ActiveRecord::Base
 	has_many :lessons, dependent: :destroy
 
-	# TODO: Model validation & spec
+	scope :most_popular, -> { order('popularity DESC') }
 
-	scope :most_popular, -> { order('popularity DESC') } 
+	validates :name, 	presence: { message: "Nazwa nie może być pusta" }
+	validates :description, presence: {message: "Opis nie może być pusty"}
 
 
 	def image_src
