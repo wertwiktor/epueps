@@ -1,6 +1,4 @@
-$("#subjects_most_popular").click(function(event) {
-
-	document.cookie="subject_scope=most_popular";
+$(".subject-catalog").fadeOut("fast", function() {
+	$(this).html("<%= j render @subjects %>");
+	$(this).fadeIn();
 });
-
-$(".subject-index").html("<%= j render @subjects %>");

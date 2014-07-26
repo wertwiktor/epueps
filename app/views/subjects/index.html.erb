@@ -1,11 +1,14 @@
-<h1 class = "center">Wszystkie kursy</h1>
-
-<div class="subject-scope-options">
-	<!-- TODO: Add link_to & AJAX request -->
-	<a href='#'  id = "subjects_most_recent">Najnowsze</a> / 
-	<a href='#'  id = "subjects_most_popular">Najbardzie popularne</a>
-</div>
-
 <div class = "subject-index">
-	<%= render @subjects %>
+
+	<h1 class = "center">Wszystkie kursy</h1>
+
+	<div class="subject-scope-options">
+	<!-- TODO: Move to helper and disable active option -->
+		<%= link_to "Popularne", most_popular_subjects_path, remote: true %> / 
+		<%= link_to "Najnowsze", most_recent_subjects_path, remote: true %>
+	</div>
+
+	<div class = "subject-catalog">
+		<%= render @subjects %>
+	</div>
 </div>

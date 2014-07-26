@@ -3,9 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-
 .subject-index {
+	h1 {
+		margin-bottom: 0;
+	}
+
+
+}
+
+.subject-catalog {
 	text-align: center;
 
 	display: flex;
@@ -26,5 +32,15 @@
 		img {
 			height: 200px;
 		}
+	}
+}
+
+.subject-scope-options {
+	text-align: center;
+	margin-bottom: 2rem;
+	a {
+		color: inherit;
+		font-weight: 100;
+		text-decoration: none;
 	}
 }

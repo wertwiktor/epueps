@@ -26,6 +26,27 @@ class SubjectsController < ApplicationController
   end
 
 
+  def index_most_popular
+    @subjects = Subject.most_popular
+    cookies[:subject_scope] = "most_popular"
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.js  { render 'index.js.erb' }
+    end
+  end
+
+  def index_most_recent
+    @subjects = Subject.most_recent
+    cookies[:subject_scope] = "most_recent"
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.js { render 'index.js.erb'}
+    end
+  end
+
+
   private
 
     def subjects_scope
