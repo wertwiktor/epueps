@@ -4,7 +4,6 @@ class SubjectsController < ApplicationController
   	@subjects_most_recent = Subject.most_recent
     @subjects_most_popular = Subject.most_popular
 
-    # TODO: Load this setting from cookies
     if subjects_scope == "most_recent"
       @subjects = @subjects_most_recent
     else
@@ -28,7 +27,7 @@ class SubjectsController < ApplicationController
 
   def index_most_popular
     @subjects = Subject.most_popular
-    cookies[:subject_scope] = "most_popular"
+    subject_scope = "most_popular"
 
     respond_to do |format|
       format.html { render 'index' }
@@ -38,7 +37,7 @@ class SubjectsController < ApplicationController
 
   def index_most_recent
     @subjects = Subject.most_recent
-    cookies[:subject_scope] = "most_recent"
+    subject_scope = "most_recent"
 
     respond_to do |format|
       format.html { render 'index' }
@@ -51,5 +50,9 @@ class SubjectsController < ApplicationController
 
     def subjects_scope
       cookies[:subject_scope] || "most_recent"
+    end
+
+    def subject_scope=(scope)
+      cookies[:subject_scope] = scope
     end
 end
