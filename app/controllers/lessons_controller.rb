@@ -18,7 +18,11 @@ class LessonsController < ApplicationController
 			flash[:success] = "Dodano lekcję"
 			redirect_to @subject
 		else
-			flash[:error] = "Wystąpił błąd" 
+			if @lesson.errors.any?
+				flash[:error] = "Wystąpiły błędy w formularzu. Liczba błędów: #{@lesson.errors.count}" 
+			else
+				flash[:error] = "Nieznany błąd. Spróbuj ponownie później"
+			end
 			render 'new'
 		end
 	end

@@ -1,7 +1,7 @@
 class Lesson < ActiveRecord::Base
 	belongs_to :subject
 
-	VIDEO_LINK_REGEX = /\A(https?:\/\/)?w{3}?\.?youtube\.com\/watch\?v=[a-z0-9]+\z/i 
+	VIDEO_LINK_REGEX = /\A(https?:\/\/)?w{3}?\.?youtube\.com\/watch\?v=[a-z0-9\-\_\,\.]+\z/i 
 
 	validates :subject_id, 	presence: true
 	validates :name,				presence:  
