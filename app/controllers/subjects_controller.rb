@@ -18,14 +18,18 @@ class SubjectsController < ApplicationController
   	@lessons = @subject.lessons.all
 
 
-    # TODO: Load from user profile/cookie
+    # TODO: Load from user profile/
+    # TODO: lesson_id cookie attr getter & setter
 
     if params[:lesson_id]
       @current_lesson = Lesson.find(params[:lesson_id]) 
+    elsif cookies["s-#{@subject.id}_lesson_id"]
+      @current_lesson = @subject.lessons.find(cookies["s-#{@subject.id}_lesson_id"])
     else
       @current_lesson = @lessons.first
     end
-    #@current_lesson = @lessons.find(4)
+
+    cookies["s-#{@subject.id}_lesson_id"] = @current_lesson.id
 
 
     # TODO: Popularity based on cookies
@@ -33,7 +37,7 @@ class SubjectsController < ApplicationController
 
   	respond_to do |format|
   		format.html
-      format.js
+      format.js 
   	end
   end
 
