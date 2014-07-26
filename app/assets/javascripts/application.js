@@ -16,16 +16,12 @@
 //= require_tree .
 
 $(document).ready(function() {
+
+	// Close-div button in alerts 
 	$(".close-div").click(function() {
 		console.log("close-div");
 		$(this).parent().fadeOut();
 	});
 
-	$("#subjects_most_recent").click(function(event) {
-
-		document.cookie="subject_scope=most_recent";
-	});
-	$("#subjects_most_popular").click(function(event) {
-		document.cookie="subject_scope=most_popular";
-	});
+	
 });
