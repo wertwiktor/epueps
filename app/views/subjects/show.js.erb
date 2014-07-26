@@ -1,0 +1,11 @@
+$('.video').fadeOut("fast", function(){
+
+	$(this).html("<%= j render partial: 'lessons/lesson_video', locals: {lesson: @current_lesson} %>");
+	$(this).fadeIn();
+
+});
+
+$('.lesson-description').fadeOut("fast", function(){
+	$(this).html("<%= j render partial: 'lessons/lesson_description', locals: {lesson: @current_lesson} %>");
+	$(this).fadeIn();
+});

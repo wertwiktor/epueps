@@ -17,10 +17,23 @@ class SubjectsController < ApplicationController
   	@subject = Subject.find(params[:id])
   	@lessons = @subject.lessons.all
 
+
+    # TODO: Load from user profile/cookie
+
+    if params[:lesson_id]
+      @current_lesson = Lesson.find(params[:lesson_id]) 
+    else
+      @current_lesson = @lessons.first
+    end
+    #@current_lesson = @lessons.find(4)
+
+
+    # TODO: Popularity based on cookies
   	@subject.update_attribute(:popularity, @subject.popularity + 1)
 
   	respond_to do |format|
   		format.html
+      format.js
   	end
   end
 

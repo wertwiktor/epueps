@@ -1,10 +1,8 @@
-<li>
-	<h2><%= link_to lesson.name, lesson %></h2>
-	<!-- <div class = "lesson-video-container">
-		<iframe class = "lesson-video" 
-						src = <%= lesson.embed_link %> 
-						allowfullscreen>
-		</iframe>
-	</div> -->
+<li class = "lesson">
+	<%= link_to lesson.name, 
+										subject_path(	lesson.subject, 
+																	params: {lesson_id: lesson.id}),
+										remote: true %>
+	
 	<%= image_tag lesson.video_thumbnail %>
 </li>

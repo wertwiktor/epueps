@@ -1,12 +1,29 @@
 <h1>
 	<%= @subject.name %>	
 </h1>
-<section class="description">
+
+<div class = "subject-page">
+
+	<div class="main-subject-content">
+		<ul class="lesson-menu">
+			<%= render @lessons %>
+		</ul>
+
+		<div class ="video">
+			<%= render partial: 'lessons/lesson_video', 
+					locals: {lesson: @current_lesson} %>
+		</div>
+</div>
+
+
+<aside class="subject-description">
 	<h2>Opis przedmiotu </h2>
 	<%= @subject.description %>
-</section>
+</aside>
 
-<section class="lessons">
-	<h2>Lekcje</h2>
-	<%= render @lessons %>
-</section>
+<aside class="lesson-description">
+	<%= render partial: 'lessons/lesson_description', 
+				locals: {lesson: @current_lesson} %>
+</aside>
+
+</div>
