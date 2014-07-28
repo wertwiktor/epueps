@@ -78,6 +78,10 @@
 
 		//background: #4d3;
 	}
+
+	.lesson.active {
+		background: darken(#E5EBEC,20%);
+	}
 }
 
 .video {

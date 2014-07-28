@@ -1,3 +1,10 @@
+console.log("asd");
+
+console.log("#lesson-" +<%= @current_lesson.id %>);
+
+$("#lesson-" +<%= @current_lesson.id %>).siblings().removeClass("active");
+$("#lesson-" +<%= @current_lesson.id %>).addClass("active");
+
 $('.video').fadeOut("fast", function(){
 
 	$(this).html("<%= j render partial: 'lessons/lesson_video', locals: {lesson: @current_lesson} %>");

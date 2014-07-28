@@ -1,4 +1,4 @@
-<li class = "lesson">
+<li class = "lesson" id = <%= "lesson-#{lesson.id}" %>>
 	<%= link_to lesson.name, 
 										subject_path(	lesson.subject, 
 																	params: {lesson_id: lesson.id}),
