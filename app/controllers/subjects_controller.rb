@@ -1,15 +1,17 @@
 class SubjectsController < ApplicationController
 
   def index
-  	@subjects_most_recent = Subject.most_recent
-    @subjects_most_popular = Subject.most_popular
-
-    if subjects_scope == "most_recent"
-      @subjects = @subjects_most_recent
+    if subjects_scope == "popular"
+      @subjects = Subject.popular
     else
-      @subjects = @subjects_most_popular
+      @subjects = Subject.recent
     end
 
+    respond_to do |format|
+      format.html
+      format.js
+      format.json
+    end
 
   end
 
@@ -66,7 +68,8 @@ class SubjectsController < ApplicationController
   private
 
     def subjects_scope
-      cookies[:subject_scope] || "most_recent"
+
+      params[:order] || cookies[:subject_scope] || "most_recent"
     end
 
     def subject_scope=(scope)

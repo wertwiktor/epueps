@@ -1,8 +1,8 @@
 class Subject < ActiveRecord::Base
 	has_many :lessons, dependent: :destroy
 
-	scope :most_popular, -> { order('popularity DESC') }
-	scope :most_recent,	 -> { order('created_at DESC') }
+	scope :popular, -> { order('popularity DESC') }
+	scope :recent,	 -> { order('created_at DESC') }
 
 	validates :name, 	presence: { message: "Nazwa nie może być pusta" }
 	validates :description, presence: {message: "Opis nie może być pusty"}

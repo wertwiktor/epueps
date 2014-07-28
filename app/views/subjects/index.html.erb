@@ -4,8 +4,13 @@
 
 	<div class="subject-scope-options">
 	<!-- TODO: Move to helper and disable active option -->
-		<%= link_to "Popularne", most_popular_subjects_path, remote: true %> / 
-		<%= link_to "Najnowsze", most_recent_subjects_path, remote: true %>
+	<!-- TODO: Use request params, not separate actions -->
+		<%= link_to "Popularne", 
+								subjects_path(params: {order: "popular"}), 
+								remote: true %> / 
+		<%= link_to "Najnowsze", 
+								subjects_path(params: {order: "recent"}), 
+								remote: true %>
 	</div>
 
 	<div class = "subject-catalog">
