@@ -26,7 +26,8 @@ describe "StaticPages" do
   	it { should have_link "Zacznij kurs", subject_path(subject1) }
 
   	it "should have subjects ordered by popularity" do
-  		expect(Subject.most_popular).to eq [subject2, subject1]
+  		expect(Subject.popular).to eq [subject2, subject1]
   	end
+
   end
 end
