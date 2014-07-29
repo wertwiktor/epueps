@@ -19,5 +19,6 @@ describe "Subject" do
   	it { should have_content "S1" }
   	it { should have_content "S2" }
   	it { should have_content subject1.description }
-  	end
+  end
+
 end
