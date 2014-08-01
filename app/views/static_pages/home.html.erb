@@ -1,15 +1,19 @@
-<section id="home-splash">
-	<div class = "container">
+<% if @splash %>
+  <section id="home-splash">
+  	<div class = "container">
 
-		<h1>Witamy<br />w platformie ePUEPS</h1>
+  		<h1>Witamy<br />w platformie ePUEPS</h1>
 
-		<%= link_to "Przeglądaj kursy", 
-								subjects_path, 
-								class: "button button-secondary" %>
-		<%= link_to "Zaloguj się", '#', class: "button button-primary" %>
+  		<%= link_to "Przeglądaj kursy", 
+  								subjects_path, 
+  								class: "button button-secondary" %>
+  		<%= link_to "Zaloguj się", 
+                  new_user_session_path,
+                  class: "button button-primary" %>
 
-	</div>
-</section>
+  	</div>
+  </section>
+<% end %>
 
 <div class="page-content">
 	<section id = "home-subjects">
@@ -28,5 +32,6 @@
 		<div class="container">
 			<h1>Najnowsze artykuły</h1>
 		</div>
+			
 	</section>
 </div>
