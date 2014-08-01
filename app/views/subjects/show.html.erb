@@ -9,6 +9,8 @@
 
 <div class = "subject-page">
 
+	<% if @lessons.any? %>
+
 	<div class="main-subject-content">
 		<ul class="lesson-menu">
 			<%= render @lessons %>
@@ -16,19 +18,24 @@
 
 		<div class ="video">
 			<%= render partial: 'lessons/lesson_video', 
-					locals: {lesson: @current_lesson} %>
+			locals: {lesson: @current_lesson} %>
 		</div>
-</div>
+	</div>
+
+	<% else %>
+		<p>Aktualnie nie ma żadnych lekcji z tego przedmiotu.</p>
+	<% end %>
 
 
-<aside class="subject-description">
-	<h2>Opis przedmiotu </h2>
-	<%= @subject.description %>
-</aside>
+	<aside class="subject-description">
+		<h2>Opis przedmiotu </h2>
+		<%= @subject.description %>
+	</aside>
 
-<aside class="lesson-description">
-	<%= render partial: 'lessons/lesson_description', 
-				locals: {lesson: @current_lesson} %>
-</aside>
+	<aside class="lesson-description">
+
+		<%= render partial: 'lessons/lesson_description', 
+		locals: {lesson: @current_lesson} unless @current_lesson.nil? %>
+	</aside>
 
 </div>

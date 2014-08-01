@@ -23,15 +23,20 @@ class SubjectsController < ApplicationController
     # TODO: Load from user profile/
     # TODO: lesson_id cookie attr getter & setter
 
-    if params[:lesson_id]
-      @current_lesson = Lesson.find(params[:lesson_id]) 
-    elsif cookies["s-#{@subject.id}_lesson_id"]
-      @current_lesson = @subject.lessons.find(cookies["s-#{@subject.id}_lesson_id"])
-    else
-      @current_lesson = @lessons.first
+    if @lessons.any?
+      if params[:lesson_id]
+        @current_lesson = Lesson.find(params[:lesson_id]) 
+      elsif cookies["s-#{@subject.id}_lesson_id"]
+        @current_lesson = @subject.lessons.find(cookies["s-#{@subject.id}_lesson_id"])
+      else
+        @current_lesson = @lessons.first
+      end
+
+      cookies["s-#{@subject.id}_lesson_id"] = @current_lesson.id
+
     end
 
-    cookies["s-#{@subject.id}_lesson_id"] = @current_lesson.id
+
 
 
     # TODO: Popularity based on cookies
