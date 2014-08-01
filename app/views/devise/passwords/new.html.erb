@@ -1,6 +1,8 @@
-<h2>Forgot your password?</h2>
+<% provide :title, "Resetowanie hasła" %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<h1 class="center">Zapomniałeś hasła?</h1>
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "custom-form" }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -8,8 +10,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+    <%= f.button :submit, "Resetuj hasło", class: "button button-primary" %>
   </div>
+  <%= render "devise/shared/links" %>
 <% end %>
 
-<%= render "devise/shared/links" %>
