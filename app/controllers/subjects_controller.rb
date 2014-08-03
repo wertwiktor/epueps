@@ -19,19 +19,18 @@ class SubjectsController < ApplicationController
   	@subject = Subject.find(params[:id])
   	@lessons = @subject.lessons.all
 
-    # TODO: Load from user profile/
-    # TODO: lesson_id cookie attr getter & setter
+    # TODO: Load from user profile
 
     if @lessons.any?
       if params[:lesson_id]
         @current_lesson = Lesson.find(params[:lesson_id]) 
-      elsif cookies["s-#{@subject.id}_lesson_id"]
-        @current_lesson = @subject.lessons.find(cookies["s-#{@subject.id}_lesson_id"])
+      elsif current_lesson
+        @current_lesson = @subject.lessons.find(current_lesson)
       else
         @current_lesson = @lessons.first
       end
 
-      cookies["s-#{@subject.id}_lesson_id"] = @current_lesson.id
+      set_current_lesson @current_lesson
 
     end
 
@@ -56,5 +55,13 @@ class SubjectsController < ApplicationController
 
     def subject_scope=(scope)
       cookies[:subject_scope] = scope
+    end
+
+    def current_lesson
+      cookies["s-#{@subject.id}_lesson_id"]
+    end
+
+    def set_current_lesson (lesson)
+      cookies["s-#{@subject.id}_lesson_id"] = lesson.id
     end
 end

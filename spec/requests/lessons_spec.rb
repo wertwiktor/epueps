@@ -40,4 +40,18 @@ describe "Lessons" do
 			it { should have_content "Niepoprawny format" }
 		end
 	end
+
+	# describe "show" do
+	# 	let(:subject1) do
+	# 	  FactoryGirl.create(:subject)
+	# 	end
+	# 	before do
+	# 	  @lesson = subject1.lessons.create(
+	# 	  	name: "Lesson", 
+	# 	  	description: "Lorem ipsum",
+	# 	  	video_link: "youtube.com/watch?v=433")
+		  
+	# 	  visit lesson_path(lesson) 
+	# 	end
+	# end
 end

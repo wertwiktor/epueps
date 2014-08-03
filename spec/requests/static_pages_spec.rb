@@ -14,8 +14,7 @@ describe "StaticPages" do
   	it { should have_title "Platforma ePUEPS" }
   	it { should have_content "Witamy" }
   	it { should have_link "Przeglądaj kursy", href: subjects_path }
-  	# TODO: Add href to "Zaloguj się" link
-  	it { should have_link "Zaloguj się" }
+  	it { should have_link "Zaloguj się", new_user_session_path }
 
   	it { should have_selector("h1", text: "Dostępne kursy") }
   	it { should have_link "Wszystkie kursy", href: subjects_path }

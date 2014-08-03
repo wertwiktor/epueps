@@ -57,14 +57,30 @@ RSpec.describe "Subjects", :type => :request do
 
     describe "when subject has at least one lesson" do
       before do
-        @lesson = subject1.lessons.create(name: "Lesson1", 
-          description: "Lorem ipsum", 
+        @lesson = subject1.lessons.create(
+          name: "Lesson1", 
+          description: "Lorem ipsum1", 
+          video_link: "youtube.com/watch?v=asdf")
+
+        @lesson2 = subject1.lessons.create(
+          name: "Lesson2", 
+          description: "Lorem ipsum2", 
           video_link: "youtube.com/watch?v=asdf")
 
         visit subject_path(subject1)
       end
       it { should have_content subject1.name }
       it { should have_link @lesson.name }
+
+      describe "remember current lesson" do
+        before do
+          click_link "Lesson2"
+          visit root_path
+          visit subject_path(subject1)
+        end
+
+        it { should have_content @lesson2.description }
+      end
     end
   end
 
