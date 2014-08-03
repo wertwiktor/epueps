@@ -215,9 +215,13 @@ h1 {
 .alert {
   height: 3em;
   line-height: 3em;
-  margin: 2em 0;
   padding: 0 2em;
+  position: fixed;
+  top: 50px; 
+  width: 70%;
 
+  margin: 0 auto;
+  
   .close-div {
     width: 1em;
     height: 1em;
@@ -226,7 +230,7 @@ h1 {
     cursor: pointer;
   }
 }
-.alert-success {
+.alert-success, .alert-notice {
   background: rgba(101, 238, 94, 0.35);
   border: 1px solid darken(rgba(101, 238, 94, 0.35), 10%);
 }

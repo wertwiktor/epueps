@@ -19,7 +19,6 @@ class SubjectsController < ApplicationController
   	@subject = Subject.find(params[:id])
   	@lessons = @subject.lessons.all
 
-
     # TODO: Load from user profile/
     # TODO: lesson_id cookie attr getter & setter
 
@@ -36,9 +35,6 @@ class SubjectsController < ApplicationController
 
     end
 
-
-
-
     # TODO: Popularity based on cookies
   	@subject.update_attribute(:popularity, @subject.popularity + 1)
 
@@ -48,32 +44,13 @@ class SubjectsController < ApplicationController
   	end
   end
 
-
-  def index_most_popular
-    @subjects = Subject.most_popular
-    subject_scope = "most_popular"
-
-    respond_to do |format|
-      format.html { render 'index' }
-      format.js  { render 'index.js.erb' }
-    end
+  def info
+    
   end
-
-  def index_most_recent
-    @subjects = Subject.most_recent
-    subject_scope = "most_recent"
-
-    respond_to do |format|
-      format.html { render 'index' }
-      format.js { render 'index.js.erb'}
-    end
-  end
-
 
   private
 
     def subjects_scope
-
       params[:order] || cookies[:subject_scope] || "most_recent"
     end
 
