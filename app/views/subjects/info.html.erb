@@ -1,0 +1,14 @@
+<% provide :title, "#{@subject.name} - informacje" %>
+
+<h1><%= @subject.name %> - informacje o przedmiocie</h1>
+
+<div class="subject-info-content">
+  <section class="lessons">
+    <h2>Dostępne lekcje</h2>
+    <%= render @lessons %>
+  </section>
+  <section class="description">
+    <h2>Opis przedmiotu</h2>
+    <p><%= @subject.description %></p>
+  </section>
+</div>

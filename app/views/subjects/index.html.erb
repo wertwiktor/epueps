@@ -8,10 +8,16 @@
 	<!-- TODO: Move to helper and disable active option -->
 		<%= link_to "Popularne", 
 								subjects_path(params: {order: "popular"}), 
-								remote: true %> / 
+								remote: true,
+								id: "scope-popular",
+								class: (@scope == "popular" ? "active" : nil)
+								%> / 
 		<%= link_to "Najnowsze", 
 								subjects_path(params: {order: "recent"}), 
-								remote: true %>
+								remote: true,
+								id: "scope-recent",
+								class: (@scope == "recent" ? "active" : nil)
+								%>
 	</div>
 
 	<div class = "subject-catalog">

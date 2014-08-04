@@ -43,6 +43,7 @@ RSpec.describe "Subjects", :type => :request do
   describe "info page" do
     before { visit subject_info_path(subject1) }
 
+    it { should have_title "#{subject1.name} - informacje" }
     it { should have_content subject1.name}
     it { should have_content subject1.description }
   end

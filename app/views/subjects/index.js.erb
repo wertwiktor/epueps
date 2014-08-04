@@ -2,3 +2,12 @@ $(".subject-catalog").fadeOut("fast", function() {
 	$(this).html("<%= j render @subjects %>");
 	$(this).fadeIn();
 });
+
+<% if @scope == "popular" %>
+  $("#scope-popular").addClass("active");
+  $("#scope-recent").removeClass("active");
+<% else %>
+  $("#scope-recent").addClass("active");
+  $("#scope-popular").removeClass("active");
+<% end %>
+

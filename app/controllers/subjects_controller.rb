@@ -1,11 +1,16 @@
 class SubjectsController < ApplicationController
 
   def index
-    if subjects_scope == "popular"
+    @scope = subjects_scope
+
+    if @scope == "popular"
       @subjects = Subject.popular
     else
       @subjects = Subject.recent
     end
+
+    cookies[:subject_scope] = @scope
+
 
     respond_to do |format|
       format.html
@@ -44,13 +49,14 @@ class SubjectsController < ApplicationController
   end
 
   def info
-    
+    @subject = Subject.find(params[:subject_id])
+    @lessons = @subject.lessons.all
   end
 
   private
 
     def subjects_scope
-      params[:order] || cookies[:subject_scope] || "most_recent"
+      params[:order] || cookies[:subject_scope] || "recent"
     end
 
     def subject_scope=(scope)
