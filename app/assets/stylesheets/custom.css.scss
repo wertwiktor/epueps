@@ -217,14 +217,15 @@ h1 {
 // TODO: http://tympanus.net/Development/NotificationStyles/bar-slidetop.html for ajax reponses
 
 .alert {
-  height: 3em;
-  line-height: 3em;
+  height: 4em;
+  line-height: 4em;
   padding: 0 2em;
   position: fixed;
-  top: 50px; 
-  width: 70%;
+  top: -4rem; 
+  width: 20rem;
+  z-index: 100;
 
-  margin: 0 auto;
+  background: rgba(234, 241, 153, 0.94);
   
   .close-div {
     width: 1em;
@@ -235,16 +236,16 @@ h1 {
   }
 }
 .alert-success, .alert-notice {
-  background: rgba(101, 238, 94, 0.35);
-  border: 1px solid darken(rgba(101, 238, 94, 0.35), 10%);
+  //background: rgba(101, 238, 94, 0.35);
+  //border: 1px solid darken(rgba(101, 238, 94, 0.35), 10%);
 }
 .alert-error {
-  background: rgba(253, 30, 0, 0.28);
-  border: 1px solid rgba(206, 79, 61, 0.15)
+  //background: rgba(253, 30, 0, 0.28);
+  //border: 1px solid rgba(206, 79, 61, 0.15)
 }
 .alert-warning {
-  background: rgba(248, 236, 141, 0.73);
-  border: 1px solid darken(rgba(248, 236, 141, 0.73), 10%);
+  //background: rgba(248, 236, 141, 0.73);
+  //border: 1px solid darken(rgba(248, 236, 141, 0.73), 10%);
 }
 
 

@@ -18,10 +18,6 @@ class Lesson < ActiveRecord::Base
 														message: "Niepoprawny format"
 													}
 
-	
-
-	
-
 	protected
 
 	def validate_link
