@@ -3,10 +3,10 @@ require 'rails_helper'
 describe Lesson do
   before do
   	@subject = Subject.create(	name: "subject", 
-  													description: "subject description")
+     description: "subject description")
   	@lesson = @subject.lessons.create(name: "lesson", 
-  																		description: "lesson description",
-  				video_link: "https://www.youtube.com/watch?v=5ca8p5OWniI")
+      description: "lesson description",
+      video_link: "https://www.youtube.com/watch?v=5ca8p5OWniI")
   end
 
   subject { @lesson }
@@ -39,7 +39,22 @@ describe Lesson do
   end
 
   describe "when video_link has wrong format" do
-  	formats = %w[https://youtube.com youtube.com?v=f3fas3&list=3f3f]
+    formats = %w[ youtube.com/watch?v=123das 
+                  youtube.com/watch?v=123&list=PL123 
+                  https://youtube.com/watch?v=123&index=1&list=1]
+
+    formats.each do |format|
+      before do
+        @lesson.video_link = format
+        @lesson.save
+      end
+
+      it { should be_valid }
+    end
+  end
+
+  describe "when video_link hasn't got an id" do
+  	formats = %w[https://youtube.com youtube.com/test]
   	formats.each do |format|
   		before { @lesson.video_link = format }
   		it { should_not be_valid }

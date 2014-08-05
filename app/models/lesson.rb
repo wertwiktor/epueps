@@ -1,7 +1,11 @@
 class Lesson < ActiveRecord::Base
 	belongs_to :subject
 
-	VIDEO_LINK_REGEX = /\A(https?:\/\/)?w{3}?\.?youtube\.com\/watch\?v=[a-z0-9\-\_\,\.]+\z/i 
+	before_save :validate_link
+
+	include YoutubeUtilities
+
+	VIDEO_LINK_REGEX = /\A(https?:\/\/)?w{3}?\.?youtube\.com\/watch\?v=[a-z0-9\-\_\,\.]+.*\z/i 
 
 	validates :subject_id, 	presence: true
 	validates :name,				presence:  
@@ -15,9 +19,9 @@ class Lesson < ActiveRecord::Base
 														message: "Niepoprawny format"
 													}
 
-
-	# TODO: Add video_id function which can deal with links 
-	# 			from videos from playlists
+	def validate_link
+		self.video_link = validate_youtube_link(self.video_link)
+	end
 
 	def embed_link
 		self.video_link.gsub("watch?v=", "embed/") + video_params
