@@ -28,15 +28,14 @@ describe "StaticPages" do
   		expect(Subject.popular).to eq [subject2, subject1]
   	end
 
-    describe "'Zobacz kurs' button should redirect to subject info page" do
+    describe "'Zobacz kurs' button" do
       before do
         click_link "subject-#{subject1.id}"
       end
 
-      it { should have_content "#{subject1.name} - informacje o przedmiocie" }
-      it { should have_button "Zacznij kurs" }
-      it { should have_content "Dostępne lekcje" }
-      it { should have_content "Informacje" }
+      it "should redirect to info page" do
+        expect(page).to have_content "informacje"
+      end
     end
 
   end

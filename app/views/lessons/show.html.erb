@@ -1,4 +1,6 @@
-<h2><%= link_to @lesson.name, @lesson %></h2>
+<% provide :title, @lesson.name %>
+
+<h1><%= @lesson.name %></h1>
 <div class = "lesson-video-container">
 	<iframe class = "lesson-video" 
 					src = <%= @lesson.embed_link %> 

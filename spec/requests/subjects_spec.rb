@@ -3,10 +3,16 @@ require 'rails_helper'
 RSpec.describe "Subjects", :type => :request do
   subject { page }
 
-  let!(:subject1) { FactoryGirl.create(:subject, name: "S1", popularity: 3, 
-    created_at: 1.hour.ago) }
-  let!(:subject2) { FactoryGirl.create(:subject, name: "S2", popularity: 5,
-    created_at: 2.hour.ago) }
+  let!(:subject1) { FactoryGirl.create(:subject, 
+    name: "S1", 
+    popularity: 3, 
+    created_at: 1.hour.ago,
+    intro_video_link: 'youtube.com/watch?v=test') }
+  let!(:subject2) { FactoryGirl.create(:subject, 
+    name: "S2", 
+    popularity: 5,
+    created_at: 2.hour.ago,
+    intro_video_link: 'https://youtube.com/watch?v=test') }
 
   describe "index page" do
 
@@ -41,11 +47,28 @@ RSpec.describe "Subjects", :type => :request do
   end
 
   describe "info page" do
+    let!(:lesson1) { FactoryGirl.create(:lesson, 
+        subject_id: subject1.id)}
     before { visit subject_info_path(subject1) }
 
     it { should have_title "#{subject1.name} - informacje" }
     it { should have_content subject1.name}
     it { should have_content subject1.description }
+    it { should have_content "Dostępne lekcje" }
+    it { should have_link "Zacznij kurs" }
+
+    it { should have_css "iframe" }
+
+
+    it { should have_link lesson1.name }
+
+    describe "lesson link" do
+      before { click_link lesson1.name }
+
+      it "should redirect to lesson#show" do
+        expect(page).to have_css("h1", text: lesson1.name)
+      end 
+    end
   end
 
   describe "show page" do

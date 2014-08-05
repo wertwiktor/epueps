@@ -11,7 +11,6 @@ class SubjectsController < ApplicationController
 
     cookies[:subject_scope] = @scope
 
-
     respond_to do |format|
       format.html
       format.js

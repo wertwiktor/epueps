@@ -3,12 +3,24 @@
 <h1><%= @subject.name %> - informacje o przedmiocie</h1>
 
 <div class="subject-info-content">
-  <section class="lessons">
+  <section class="table-of-contents">
     <h2>Dostępne lekcje</h2>
-    <%= render @lessons %>
+    <%= render partial: 'subjects/table_of_contents',
+        locals: {lessons: @lessons} %>
   </section>
   <section class="description">
     <h2>Opis przedmiotu</h2>
     <p><%= @subject.description %></p>
   </section>
+  <section class="intro-video">
+    <iframe
+      class = "lesson-video"
+      src = <%= @subject.intro_video_link %> allowfullscreen>
+
+      </iframe>
+  </section>
+
+  <%= link_to "Zacznij kurs", 
+              subject_path(@subject), 
+              class: "button button-primary" %> 
 </div>

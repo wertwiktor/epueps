@@ -1,0 +1,5 @@
+<ol>
+<% lessons.each do |lesson| %>
+  <li><%= link_to lesson.name, lesson_path(lesson) %></li>
+<% end %>
+</ol>
