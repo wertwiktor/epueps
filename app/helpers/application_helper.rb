@@ -16,7 +16,5 @@ module ApplicationHelper
 			link_to "Zaloguj się", new_user_session_path
 		end
 	end
-
-
 	
 end

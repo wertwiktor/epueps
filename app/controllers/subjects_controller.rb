@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
 
+  include CurrentLesson
+
   def index
     @scope = subjects_scope
 
@@ -22,6 +24,7 @@ class SubjectsController < ApplicationController
   def show
   	@subject = Subject.find(params[:id])
   	@lessons = @subject.lessons.all
+    
 
     # TODO: Load from user profile
 
@@ -35,6 +38,13 @@ class SubjectsController < ApplicationController
       end
 
       set_current_lesson @current_lesson
+    
+
+      if @current_lesson.videos.any? 
+        @current_lesson_video = current_lesson_video(@current_lesson)
+      else
+        @current_lesson_video = create_example_video(@current_lesson)
+      end 
 
     end
 

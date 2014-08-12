@@ -8,7 +8,11 @@ FactoryGirl.define do
 
   factory :lesson do
     name          "Lesson"
-    video_link    "youtube.com/watch?v=sr3kd3"
     description   "Lorem ipsum"       
+  end
+
+  factory :video do
+    name          "Lesson video"
+    link          "https://www.youtube.com/watch?v=CkhlTW7rjLk"
   end
 end

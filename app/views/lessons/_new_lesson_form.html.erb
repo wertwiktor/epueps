@@ -3,8 +3,6 @@
 <%= simple_form_for [@subject, @lesson],
 										html: {class: "custom-form"} do |f| %>
 	<%= f.input :name, 				label: "Nazwa" %>
-	<%= f.input :video_link, 	label: "Adres filmu",
-							placeholder: "https://youtube.com/watch?v=video_id" %>
 	<%= f.input :description,	label: "Opis" %>
 	<%= f.submit 	'Dodaj lekcję',
 								class: 'button button-primary' %>

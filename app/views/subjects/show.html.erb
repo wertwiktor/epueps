@@ -13,12 +13,13 @@
 
 	<div class="main-subject-content">
 		<ul class="lesson-menu">
-			<%= render @lessons %>
+			<%= render partial: 'lessons/lesson', collection: @lessons, 
+						locals: {current_lesson_video: @current_lesson_video} %>
 		</ul>
 
 		<div class ="video">
 			<%= render partial: 'lessons/lesson_video', 
-			locals: {lesson: @current_lesson} %>
+			locals: {video: @current_lesson_video} %>
 		</div>
 	</div>
 

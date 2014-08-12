@@ -12,10 +12,9 @@ describe "Lessons" do
 		describe "it should create a new lesson" do
 			before do
 				@lesson = subject1.lessons.create(name: "lesson", 
-					description: "lorem", video_link: "youtube.com/watch?v=f4")
+					description: "lorem")
 				fill_in "Nazwa", with: @lesson.name
 				fill_in "Opis", with: @lesson.description
-				fill_in "Adres filmu", with: @lesson.video_link
 
 				click_button "Dodaj lekcję"
 			end
@@ -30,15 +29,6 @@ describe "Lessons" do
 			it { should have_content "Wystąpiły błędy w formularzu." }
 		end
 
-		describe "for invalid video link" do
-			before do
-				fill_in "Adres filmu", with: "lorem"
-				click_button "Dodaj lekcję"
-			end
-
-			it { should have_content "Wystąpiły błędy w formularzu" }
-			it { should have_content "Niepoprawny format" }
-		end
 	end
 
 	# describe "show" do

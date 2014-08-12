@@ -1,26 +1,28 @@
 class Lesson < ActiveRecord::Base
-	belongs_to :subject
 
-	before_save :validate_link
+  # has_many  :lesson_resources
+  has_many :videos, dependent: :destroy
 
-	include YoutubeUtilities
+  after_save :add_example_video
 
-	
-	validates :subject_id, 	presence: true
-	validates :name,				presence:  
-													{ message: "Nazwa nie może być pusta" }
-	validates :description, presence: 
-													{ message: "Opis nie może być pusty" }
-	validates :video_link, 	presence:
-													{ message: "Link do filmu nie może być pusty" },
-													format: 
-													{ with: VIDEO_LINK_REGEX,
-														message: "Niepoprawny format"
-													}
+  belongs_to :subject
 
-	protected
+  validates :subject_id,  presence: true
+  validates :name,        presence:  
+                          { message: "Nazwa nie może być pusta" }
+  validates :description, presence: 
+                          { message: "Opis nie może być pusty" }
+                      
+  # TODO: Add other resources
+  def resources
+    videos
+  end
 
-	def validate_link
-		self.video_link = validate_youtube_link(self.video_link)
-	end
+  private
+
+  def add_example_video
+    self.videos.build(name: "Example(delete this later)", 
+      link: "https://youtube.com/watch?v=example")
+  end
+  
 end

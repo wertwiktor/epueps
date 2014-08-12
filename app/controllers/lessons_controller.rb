@@ -1,7 +1,12 @@
 class LessonsController < ApplicationController
 	
+	include CurrentLesson
+
 	def show
 		@lesson = Lesson.find(params[:id])
+		# TODO: Add memoization
+		@current_lesson_video = 
+			current_lesson_video(@lesson) if @lesson.videos.any?
 		@subject = @lesson.subject
 	end
 
