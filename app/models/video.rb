@@ -13,6 +13,8 @@ class Video < ActiveRecord::Base
             }
   validates :name,
             presence: { message: "Nazwa filmu nie może być pusta" }
+  validates :lesson_id, presence: true
+
 
   def embed_link
     link.gsub("watch?v=", "embed/") + video_params
@@ -27,7 +29,6 @@ class Video < ActiveRecord::Base
   def validate!
     self.link = validate_youtube_link(self.link)
   end
-
 
   def video_id
     self.link.gsub(/^.*v=/, "")

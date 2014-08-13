@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Video, :type => :model do
+  let!(:subject1) { FactoryGirl.create(:subject) }
+  let!(:lesson) { FactoryGirl.create(:lesson, subject_id: subject1.id) }
   before do
-    @video = Video.create(
+    @video = lesson.videos.create(
       name: "Video",
       link: "https://www.youtube.com/watch?v=5ca8p5OWniI")
     @video.save
@@ -23,6 +25,11 @@ RSpec.describe Video, :type => :model do
 
   describe "when link is blank" do
     before { @video.link = " " } 
+    it { should_not be_valid }
+  end
+
+  describe "when lesson id is blank" do
+    before { @video.lesson_id = nil }
     it { should_not be_valid }
   end
 

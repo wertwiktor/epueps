@@ -1,7 +1,9 @@
 class Lesson < ActiveRecord::Base
 
   # has_many  :lesson_resources
-  has_many :videos, dependent: :destroy
+  has_many  :videos, 
+            dependent: :destroy, 
+            after_add: :destroy_example_video
 
   after_save :add_example_video
 
@@ -18,11 +20,29 @@ class Lesson < ActiveRecord::Base
     videos
   end
 
+  def has_example_video?
+    if videos.find_by name: "Example(delete this later)"
+      true
+    else
+      false
+    end
+  end
+
+  def destroy_example_video(video)
+    example = self.videos.find_by name: "Example(delete this later)"
+    if example && videos.size > 1
+      example.destroy!
+    end
+  end
+
   private
 
   def add_example_video
-    self.videos.build(name: "Example(delete this later)", 
-      link: "https://youtube.com/watch?v=example")
+    if videos.empty?
+      videos.create(name: "Example(delete this later)", 
+        link: "https://youtube.com/watch?v=example")
+    end
   end
+
   
 end
