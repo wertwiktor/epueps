@@ -4,11 +4,11 @@ module CurrentLesson
   # first video if lesson hadn't been played yet 
 
   def current_lesson_video(lesson)
-    lesson_id = params[:current_video]            || 
+    video_id = params[:video_id]            || 
       current_lesson_video_from_cookie(lesson)  ||
       nil
 
-    lesson_id ? Video.find(lesson_id) : lesson.videos.first
+    video_id ? Video.find(video_id) : lesson.videos.first
   end
 
   def current_lesson_video_from_cookie(lesson)

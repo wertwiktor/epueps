@@ -41,10 +41,13 @@ class SubjectsController < ApplicationController
     
 
       if @current_lesson.videos.any? 
-        @current_lesson_video = current_lesson_video(@current_lesson)
+        @current_video = current_lesson_video(@current_lesson)
       else
-        @current_lesson_video = create_example_video(@current_lesson)
+        @current_video = create_example_video(@current_lesson)
       end 
+
+      
+      raise 'WrongVideoId' unless @current_video.lesson.subject == @subject
 
     end
 
