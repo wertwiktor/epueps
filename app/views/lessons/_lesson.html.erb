@@ -2,6 +2,10 @@
 	<%= link_to lesson.name, 
 										subject_path(	lesson.subject, 
 																	params: {lesson_id: lesson.id}) %>
+
+  <ul>
+    <%= render lesson.videos %>
+  </ul>
 	
-	<%= image_tag current_lesson_video.thumbnail %>
+	<%= image_tag lesson.thumbnail %>
 </li>

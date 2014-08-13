@@ -20,6 +20,10 @@ class Lesson < ActiveRecord::Base
     videos
   end
 
+  def thumbnail
+    videos.first.thumbnail
+  end
+
   def has_example_video?
     if videos.find_by name: "Example(delete this later)"
       true
@@ -30,7 +34,7 @@ class Lesson < ActiveRecord::Base
 
   def destroy_example_video(video)
     example = self.videos.find_by name: "Example(delete this later)"
-    if example && videos.size > 1
+    if example && video != example
       example.destroy!
     end
   end

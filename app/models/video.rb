@@ -21,8 +21,10 @@ class Video < ActiveRecord::Base
   end
 
   def thumbnail
-    "http://img.youtube.com/vi/#{self.video_id}/1.jpg"
+    "https://img.youtube.com/vi/#{self.video_id}/1.jpg"
   end
+
+
 
   protected
 
@@ -33,4 +35,5 @@ class Video < ActiveRecord::Base
   def video_id
     self.link.gsub(/^.*v=/, "")
   end
+  
 end

@@ -63,4 +63,10 @@ RSpec.describe Video, :type => :model do
       it { should be_valid }
     end
   end
+
+  describe "thumbnail" do
+    it "should have the right format" do
+      expect(@video.thumbnail).to eq "https://img.youtube.com/vi/5ca8p5OWniI/1.jpg"
+    end
+  end
 end

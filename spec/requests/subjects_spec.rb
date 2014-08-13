@@ -83,28 +83,37 @@ RSpec.describe "Subjects", :type => :request do
       before do
         @lesson = subject1.lessons.create(
           name: "Lesson1", 
-          description: "Lorem ipsum1", 
-          video_link: "youtube.com/watch?v=asdf")
+          description: "Lorem ipsum1")
+
+        @video1 = @lesson.videos.create(name: 'video 1', 
+          link: 'youtube.com/watch?v=asdf')
+        @video2 = @lesson.videos.create(name: 'video 2', 
+          link: 'youtube.com/watch?v=asdff')
 
         @lesson2 = subject1.lessons.create(
           name: "Lesson2", 
-          description: "Lorem ipsum2", 
-          video_link: "youtube.com/watch?v=asdf")
+          description: "Lorem ipsum2")
+
+        @video3 = @lesson2.videos.create(name: 'video 3', 
+          link: 'youtube.com/watch?v=asdff')
+        @video4 = @lesson2.videos.create(name: 'video 4', 
+          link: 'youtube.com/watch?v=asdff')
 
         visit subject_path(subject1)
       end
       it { should have_content subject1.name }
       it { should have_link @lesson.name }
 
-      describe "remember current lesson" do
-        before do
-          click_link "Lesson2"
-          visit root_path
-          visit subject_path(subject1)
-        end
+      # Subject menu
+      it { should have_content @lesson.name }
+      it { should have_content @lesson2.name }
+      it { should have_content @video1.name }
+      it { should have_content @video2.name }
+      it { should have_content @video3.name }
+      it { should have_content @video4.name }
 
-        it { should have_content @lesson2.description }
-      end
+      it { should have_css("img[src='#{@lesson.thumbnail}']") }
+      it { should have_css("img[src='#{@lesson2.thumbnail}']") }
     end
   end
 

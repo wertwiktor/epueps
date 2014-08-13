@@ -45,6 +45,12 @@ describe Lesson do
     end
   end
 
+  describe "lesson thumbnail" do 
+    it "should have the right src" do
+      expect(@lesson.thumbnail).to eq @lesson.videos.first.thumbnail
+    end
+  end
+
   describe "new lesson" do
     before do
       @new_lesson = Lesson.new(name: "new", description: "desc", 
