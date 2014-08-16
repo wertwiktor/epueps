@@ -1,13 +1,14 @@
 class LessonsController < ApplicationController
 	
-	include CurrentLesson
+	include CurrentVideo
 
+	# TODO: This is not needed so let's delete it
 	def show
 		@lesson = Lesson.find(params[:id])
 		# TODO: Add memoization
-		@current_lesson_video = 
-			current_lesson_video(@lesson) if @lesson.videos.any?
 		@subject = @lesson.subject
+		@current_lesson_video = 
+			current_video(@subject) if @lesson.videos.any?
 	end
 
 	def new

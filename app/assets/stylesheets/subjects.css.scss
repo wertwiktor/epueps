@@ -59,12 +59,21 @@
 	margin-bottom: 2em;
 	float: left;
 
+	.lesson-videos {
+		list-style: none;
+		line-height: 1.5em;
+	}
+
 	.lesson {
 		flex: 1;
 		display: block;
+
+		padding: 0 1rem;
 		
 
-		line-height: 4em;
+		h2 {
+			line-height: 3.5rem;
+		}
 
 		border-bottom: 1px solid #D1D1D1;
 
@@ -76,7 +85,7 @@
 		}
 		
 		img { 
-			height: 100%;
+			width: 5rem;
 			float: left;
 			margin-right: 0.5em;
 		}

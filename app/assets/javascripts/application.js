@@ -27,5 +27,8 @@ $(document).ready(function() {
     'top': '-4rem'
   }, 300);
   
+
+  $(".lesson>.lesson-videos").hide();
+  $(".lesson.active>.lesson-videos").show();
 });
 

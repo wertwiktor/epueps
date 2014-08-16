@@ -1,9 +1,8 @@
-console.log("asd");
+$("#lesson-" +<%= @current_video.lesson.id %>).siblings().removeClass("active");
+$("#lesson-" +<%= @current_video.lesson.id %>).addClass("active");
 
-console.log("#lesson-" +<%= @current_lesson.id %>);
-
-$("#lesson-" +<%= @current_lesson.id %>).siblings().removeClass("active");
-$("#lesson-" +<%= @current_lesson.id %>).addClass("active");
+$(".lesson>.lesson-videos").hide();
+$(".lesson.active>.lesson-videos").show();
 
 $('.video').fadeOut("fast", function(){
 

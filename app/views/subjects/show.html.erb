@@ -13,7 +13,9 @@
 
 	<div class="main-subject-content">
 		<ul class="lesson-menu">
-			<%= render @lessons %>
+			<%= render partial: 'lessons/lesson', 
+						collection: @lessons,
+						locals: { current_lesson: @current_lesson } %>
 		</ul>
 
 		<div class ="video">

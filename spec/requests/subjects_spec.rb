@@ -105,15 +105,34 @@ RSpec.describe "Subjects", :type => :request do
       it { should have_link @lesson.name }
 
       # Subject menu
-      it { should have_content @lesson.name }
-      it { should have_content @lesson2.name }
-      it { should have_content @video1.name }
-      it { should have_content @video2.name }
-      it { should have_content @video3.name }
-      it { should have_content @video4.name }
+      it { should have_link @lesson.name }
+      it { should have_link @lesson2.name }
 
-      it { should have_css("img[src='#{@lesson.thumbnail}']") }
-      it { should have_css("img[src='#{@lesson2.thumbnail}']") }
+
+      describe "after clicking menu links" do
+        before { click_link @video4.name }
+        it { should have_css("iframe[id='video-#{@video4.id}']") }
+        it { should have_content @video4.lesson.description }
+        it { should have_content @video4.lesson.subject.description }
+
+        it "should only show active lesson's videos" do
+          expect(page).to have_link @video3.name
+          expect(page).to have_link @video4.name
+          expect(page).not_to have_link @video1.name
+          expect(page).not_to have_link @video2.name
+        end
+
+        describe "after leaving page" do
+          before do
+            visit root_path
+            visit subject_path(subject1)
+          end
+
+          it "should rememeber last video" do
+            expect(page).to have_css("iframe[id='video-#{@video4.id}']")
+          end
+        end
+      end
     end
   end
 

@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
 
-  include CurrentLesson
+  include CurrentVideo
 
   def index
     @scope = subjects_scope
@@ -25,30 +25,20 @@ class SubjectsController < ApplicationController
   	@subject = Subject.find(params[:id])
   	@lessons = @subject.lessons.all
     
-
     # TODO: Load from user profile
 
-    if @lessons.any?
-      if params[:lesson_id]
-        @current_lesson = Lesson.find(params[:lesson_id]) 
-      elsif current_lesson
-        @current_lesson = @subject.lessons.find(current_lesson)
-      else
-        @current_lesson = @lessons.first
-      end
+    @current_video = current_video(@subject)
 
-      set_current_lesson @current_lesson
-    
+    if @current_video
+      @current_lesson = @current_video.lesson
 
-      if @current_lesson.videos.any? 
-        @current_video = current_lesson_video(@current_lesson)
-      else
-        @current_video = create_example_video(@current_lesson)
+      unless @current_video.lesson.subject == @subject
+        raise 'WrongVideoId' 
       end 
 
-      
-      raise 'WrongVideoId' unless @current_video.lesson.subject == @subject
-
+      set_current_video(@subject, @current_video)
+    # else
+    #   raise 'VideoNotFound'
     end
 
     # TODO: Popularity based on cookies
