@@ -68,11 +68,28 @@
 		flex: 1;
 		display: block;
 
-		padding: 0 1rem;
+		a {
+			color: #ddd;
+			text-decoration: none;
+			margin-left: 1rem;
+		}
+
 		
 
 		h2 {
-			line-height: 3.5rem;
+			line-height: 2.5rem;
+			background: #2C3B4B;
+			width: 100%;
+			color: #fff;
+			border-left: 7px solid #008f9c;
+			box-sizing: border-box;
+			font-size: 1.1em;
+
+			transition: 0.3s;
+
+			&:hover {
+				border-left: 14px solid #008f9c;
+			}
 		}
 
 		border-bottom: 1px solid #D1D1D1;
@@ -94,7 +111,15 @@
 	}
 
 	.lesson.active {
-		background: darken(#E5EBEC,20%);
+		background: #e4e4e4;
+	}
+}
+
+.lesson-videos {
+
+	padding: 0.5rem 0;
+	a {
+		color: #343434 !important;
 	}
 }
 

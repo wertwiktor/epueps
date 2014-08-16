@@ -108,7 +108,7 @@ RSpec.describe "Subjects", :type => :request do
       it { should have_link "video 2" }
 
       # Subject menu
-      it { should have_link @lesson.name }
+      it { should have_link @lesson.name }  
       it { should have_link @lesson2.name }
 
 
