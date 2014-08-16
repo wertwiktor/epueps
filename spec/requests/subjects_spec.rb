@@ -104,6 +104,9 @@ RSpec.describe "Subjects", :type => :request do
       it { should have_content subject1.name }
       it { should have_link @lesson.name }
 
+      it { should have_link "video 1" }
+      it { should have_link "video 2" }
+
       # Subject menu
       it { should have_link @lesson.name }
       it { should have_link @lesson2.name }
@@ -116,10 +119,10 @@ RSpec.describe "Subjects", :type => :request do
         it { should have_content @video4.lesson.subject.description }
 
         it "should only show active lesson's videos" do
-          expect(page).to have_link @video3.name
-          expect(page).to have_link @video4.name
-          expect(page).not_to have_link @video1.name
-          expect(page).not_to have_link @video2.name
+          expect(page).to have_css "a[class='hidden']", text: "video 1"
+          expect(page).to have_css "a[class='hidden']", text: "video 2"
+          expect(page).to have_content "video 3" 
+          expect(page).to have_content "vidoe 4"
         end
 
         describe "after leaving page" do

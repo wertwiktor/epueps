@@ -1,5 +1,10 @@
-$("#lesson-" +<%= @current_video.lesson.id %>).siblings().removeClass("active");
-$("#lesson-" +<%= @current_video.lesson.id %>).addClass("active");
+var current = "#lesson-" +<%= @current_video.lesson.id %>;
+
+$(current).siblings().removeClass("active");
+$(current).siblings().find("a").addClass("hidden");
+$(current).addClass("active");
+$(current).find("a").removeClass("hidden");
+
 
 $(".lesson>.lesson-videos").hide();
 $(".lesson.active>.lesson-videos").show();
