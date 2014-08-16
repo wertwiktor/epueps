@@ -118,13 +118,6 @@ RSpec.describe "Subjects", :type => :request do
         it { should have_content @video4.lesson.description }
         it { should have_content @video4.lesson.subject.description }
 
-        it "should only show active lesson's videos" do
-          expect(page).to have_css "a[class='hidden']", text: "video 1"
-          expect(page).to have_css "a[class='hidden']", text: "video 2"
-          expect(page).to have_content "video 3" 
-          expect(page).to have_content "vidoe 4"
-        end
-
         describe "after leaving page" do
           before do
             visit root_path
