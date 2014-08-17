@@ -34,4 +34,14 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe "when email is already in database" do
+    before do
+      @user2 = User.new(email: "foo@bar.com", password: "foobar123")
+      @user2.save
+    end
+
+    subject { @user2 }
+    it { should_not be_valid }
+  end
+
 end

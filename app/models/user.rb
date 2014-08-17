@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
 
   def admin?
-    self.admin
+    self.admin ? true : false
   end
 end

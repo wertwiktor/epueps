@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     get 'info'
   	resources :lessons, except: :index
   end	
+
+  resources :users
 end
