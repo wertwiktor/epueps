@@ -15,4 +15,9 @@ FactoryGirl.define do
     name          "Lesson video"
     link          "https://www.youtube.com/watch?v=CkhlTW7rjLk"
   end
+
+  factory :user do
+    email         "foo@bar.com"
+    password      "foobar123"
+  end 
 end
