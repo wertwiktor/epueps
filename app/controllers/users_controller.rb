@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   before_filter :authenticate_admin
 
   def index
-    @users = User.all
+    @users = all_or_searched_users
+
+    unless @users.any?
+      redirect_to users_path, notice: "Nie znaleziono użytkownika" 
+    end
+
+    @search_params = params[:search]
   end
 
 
@@ -23,6 +29,15 @@ class UsersController < ApplicationController
     unless current_user && current_user.admin?
       flash[:error] = "Nie masz uprawnień do wykonania tej akcji"
       redirect_to root_path
+    end
+  end
+
+
+  def all_or_searched_users
+    unless params[:search].nil?
+      User.where('email ~* :pattern', pattern: params[:search]) 
+    else
+      User.all 
     end
   end
 end

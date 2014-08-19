@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   resources :subjects, shallow: true do
     get 'info'
-  	resources :lessons, except: :index
-  end	
+    resources :lessons, except: :index
+  end 
 
   resources :users
+  match '/users', to: 'users#index', via: :get
+
 end

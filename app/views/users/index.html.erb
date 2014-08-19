@@ -1,15 +1,29 @@
 <% provide :title, "Wszyscy użytkownicy" %>
 
-<h1>Wszyscy użytkownicy</h1>
+<section class = "users-index">
+  <h1>Wszyscy użytkownicy</h1>
 
-<table>
-  <tr>
-    <td>Email</td>
-    <td>Ostatnio zalogowany</td>
-    <td>IP logowania</td>
-    <td>Administrator</td>
-    <td>Akcje</td>
-  </tr>
-  <%= render @users %>
-</table>
-  
+  <section class="search">
+    <%= form_tag '/users', method: :get do %>
+      <%= search_field_tag 'search'  %>
+      <%= submit_tag 'Szukaj' %>
+    <% end %>
+
+    <% unless @search_params.nil? %>
+      <div class="search-params">
+        Kryteria: <%= @search_params %>
+      </div>
+    <% end %>
+  </section>
+
+  <table>
+    <tr>
+      <td>Email</td>
+      <td>Ostatnio zalogowany</td>
+      <td>IP logowania</td>
+      <td>Administrator</td>
+      <td>Akcje</td>
+    </tr>
+    <%= render @users %>
+  </table>
+</section>
