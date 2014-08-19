@@ -34,7 +34,7 @@ RSpec.describe "Users", :type => :request do
   end
 
   describe "sign up page" do
-    before { visit '/users/sign_up' }
+    before { visit new_user_registration_path }
 
     it { should have_content "Rejestracja" }
     it { should have_content "Email" }
@@ -45,7 +45,6 @@ RSpec.describe "Users", :type => :request do
 
     describe "after signing up with valid data" do
       before do
-        visit '/users/sign_up'
         fill_in "Email",            with: 'test@bar.com'
         fill_in "Hasło",            with: 'foobar123'
         fill_in "Potwierdź hasło",  with: 'foobar123'
@@ -63,7 +62,16 @@ RSpec.describe "Users", :type => :request do
       end
     end
 
-    describe "after signing up with invalid data" 
+    describe "after signing up with invalid data" do
+      before do
+        fill_in "Email",            with: '.com'
+        fill_in "Hasło",            with: 'foobar123'
+        fill_in "Potwierdź hasło",  with: 'foobar123'
+        click_button "Zarejestruj się" 
+      end
+
+      it { should have_content "W formularzu wystąpiły błędy" }
+    end
   end
 
 end

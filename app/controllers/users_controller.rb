@@ -5,6 +5,17 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:success] = "Usunięto profil użytkownika"
+      redirect_to :back
+    else
+      flash[:error] = "Wystąpił błąd, spróbuj ponownie"
+    end  
+  end
+
   private
 
   def authenticate_admin
