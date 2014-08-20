@@ -17,13 +17,17 @@
   </section>
 
   <table>
-    <tr>
-      <td>Email</td>
-      <td>Ostatnio zalogowany</td>
-      <td>IP logowania</td>
-      <td>Administrator</td>
-      <td>Akcje</td>
-    </tr>
-    <%= render @users %>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Ostatnio zalogowany</th>
+        <th>IP logowania</th>
+        <th>Administrator</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @users %>
+    </tbody>
   </table>
 </section>

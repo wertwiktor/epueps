@@ -1,3 +1,41 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+table {
+
+  margin-top: 3em; // temp
+
+  border-collapse: collapse;
+  border: 1px solid #c5c5c5;
+
+  line-height: 2.5em;
+
+  thead {
+    background: #eb8a45;
+    color: #fff;
+    padding: 1em;
+
+    tr {
+      background: inherit;
+    }
+  } 
+
+  th {
+    font-weight: normal;
+  }
+
+  tr {
+    border: 1px solid #c5c5c5;
+    background: #E6E6E6;
+
+    &:nth-child(even) {
+      background: #D8D8D8;
+    }
+  }
+
+  td, th {
+    padding: 0 1.5em;
+  }
+}
