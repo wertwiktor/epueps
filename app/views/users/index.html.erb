@@ -11,7 +11,8 @@
 
     <% unless @search_params.nil? %>
       <div class="search-params">
-        Kryteria: <%= @search_params %>
+        Kryteria: <%= @search_params %> | 
+        <%= link_to "Powrót", users_path %>
       </div>
     <% end %>
   </section>

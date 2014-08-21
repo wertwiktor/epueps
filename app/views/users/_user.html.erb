@@ -1,6 +1,6 @@
 <tr>
   <td><%= user.email %></td>
-  <td><%= user.last_sign_in_at.to_formatted_s(:db) %></td>
+  <td><%= user.last_sign_in_at %></td>
   <td><%= user.last_sign_in_ip %></td>
   <td><%= user.admin? ? "tak" : "nie" %></td>
   <td><%= link_to "Usuń", user_path(user), 

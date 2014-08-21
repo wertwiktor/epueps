@@ -123,6 +123,16 @@ RSpec.describe "Users", :type => :request do
           end
 
           it { should have_content "Kryteria: foo" }
+          it { should have_link "Powrót", users_path }
+
+          describe "clicking the return link " do
+            before { click_link "Powrót" }
+            it "should show all users" do
+              [user, user2, admin].each do |u|
+                expect(page).to have_content u.email
+              end
+            end
+          end
         end
 
         describe "when user is not found in the database" do
