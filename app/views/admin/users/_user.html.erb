@@ -3,6 +3,6 @@
   <td><%= user.last_sign_in_at %></td>
   <td><%= user.last_sign_in_ip %></td>
   <td><%= user.admin? ? "tak" : "nie" %></td>
-  <td><%= link_to "Usuń", user_path(user), 
+  <td><%= link_to "Usuń", admin_user_path(user), 
             method: :delete unless user == current_user %></td>
 </tr>

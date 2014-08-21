@@ -7,7 +7,14 @@ Rails.application.routes.draw do
     resources :lessons, except: :index
   end 
 
-  resources :users
-  match '/users', to: 'users#index', via: :get
+  namespace :admin do
+    resources :users
+    resources :subject, except: [:show, :index] do
+      resources :lessons, except: [:index, :show]
+    end
+
+    match '/', to: 'admin_pages#home', via: :get
+  end
+  # match '/users', to: 'users#index', via: :get
 
 end

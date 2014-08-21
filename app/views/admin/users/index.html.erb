@@ -4,7 +4,7 @@
   <h1>Wszyscy użytkownicy</h1>
 
   <section class="search">
-    <%= form_tag '/users', method: :get do %>
+    <%= form_tag admin_users_path, method: :get do %>
       <%= search_field_tag 'search'  %>
       <%= submit_tag 'Szukaj' %>
     <% end %>
@@ -12,7 +12,7 @@
     <% unless @search_params.nil? %>
       <div class="search-params">
         Kryteria: <%= @search_params %> | 
-        <%= link_to "Powrót", users_path %>
+        <%= link_to "Powrót", admin_users_path %>
       </div>
     <% end %>
   </section>

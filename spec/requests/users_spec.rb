@@ -1,11 +1,5 @@
 require 'rails_helper'
 
-def sign_in(user)
-  visit new_user_session_path
-  fill_in "Email",  with: user.email
-  fill_in "Hasło",  with: user.password
-  click_button "Zaloguj się"
-end
 
 RSpec.describe "Users", :type => :request do
 
@@ -83,14 +77,14 @@ RSpec.describe "Users", :type => :request do
   describe "index page" do
 
     describe "when user is not signed in" do
-      before { visit users_path }
+      before { visit admin_users_path }
       it { should have_content "Nie masz uprawnień" }
     end
 
     describe "when user is not an admin" do
       before do
         sign_in(user)
-        visit users_path
+        visit admin_users_path
       end
 
       it { should have_content "Nie masz uprawnień" }
@@ -99,12 +93,12 @@ RSpec.describe "Users", :type => :request do
     describe "when user is an admin" do
       before do
         sign_in(admin)
-        visit users_path
+        visit admin_users_path
       end
 
       it { should have_content "Wszyscy użytkownicy" }
-      it { should have_link "Usuń", href: user_path(user) }
-      it { should_not have_link "Usuń", href: user_path(admin) }
+      it { should have_link "Usuń", href: admin_user_path(user) }
+      it { should_not have_link "Usuń", href: admin_user_path(admin) }
 
       it { should have_css "input[name=search]" }
       it { should have_button "Szukaj" }
@@ -123,7 +117,7 @@ RSpec.describe "Users", :type => :request do
           end
 
           it { should have_content "Kryteria: foo" }
-          it { should have_link "Powrót", users_path }
+          it { should have_link "Powrót", admin_users_path }
 
           describe "clicking the return link " do
             before { click_link "Powrót" }

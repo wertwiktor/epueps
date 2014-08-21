@@ -5,7 +5,7 @@ describe "Lessons" do
 
 	describe "new" do
 		let!(:subject1) { FactoryGirl.create(:subject) }
-		before { visit new_subject_lesson_path(subject1) }
+		before { visit new_admin_subject_lesson_path(subject1) }
 		it { should have_content "Nowa lekcja" }
 		it { should have_selector "form" }
 
