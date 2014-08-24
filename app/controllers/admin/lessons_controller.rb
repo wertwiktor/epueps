@@ -1,6 +1,11 @@
 class Admin::LessonsController < ApplicationController
+
+  before_filter :authenticate_admin
   
   include CurrentVideo
+  include Admin
+
+  layout 'admin'
 
   def new
     @lesson = Lesson.new

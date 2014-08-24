@@ -8,6 +8,9 @@
 				<li><%= link_to "Wszystkie kursy", subjects_path %></li>
 				<li><%= link_to "O platformie", '#' %></li>
 
+				<% if user_signed_in? && current_user.admin? %>
+					<li><%= link_to "Panel administracyjny", admin_path %></li>
+				<% end %>
 
 				<li><%= sign_in_out_link %></li>
 			</ul>

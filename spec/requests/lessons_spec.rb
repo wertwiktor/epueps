@@ -3,8 +3,12 @@ require 'rails_helper'
 describe "Lessons" do
 	subject { page }
 
+	let(:admin) { FactoryGirl.create(:admin) }
+	let!(:subject1) { FactoryGirl.create(:subject) }
+
 	describe "new" do
-		let!(:subject1) { FactoryGirl.create(:subject) }
+		before { sign_in admin }
+		
 		before { visit new_admin_subject_lesson_path(subject1) }
 		it { should have_content "Nowa lekcja" }
 		it { should have_selector "form" }

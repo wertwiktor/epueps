@@ -2,6 +2,8 @@ class Admin::UsersController < ApplicationController
   before_filter :authenticate_admin
 
   include Admin
+  
+  layout 'admin'
 
   def index
     @users = all_or_searched_users

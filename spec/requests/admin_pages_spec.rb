@@ -5,6 +5,15 @@ RSpec.describe "AdminPages", :type => :request do
   let!(:admin) { FactoryGirl.create(:admin) }
 
   subject { page }
+
+  describe "site's home page when admin is signed in" do
+    before do
+      sign_in admin
+      visit root_path
+    end
+
+    it { should have_link "Panel administracyjny", href: admin_path }
+  end
   
   describe "index page" do
     context "as not-admin user" do
@@ -21,10 +30,10 @@ RSpec.describe "AdminPages", :type => :request do
       it { should have_content "Panel administracyjny" }
       it { should have_content "Zalogowano jako: #{admin.email}" }
 
-      it { should have_content "Przedmioty: " }
-      it { should have_content "Lekcje: " }
-      it { should have_content "Filmy: " }
-      it { should have_content "Użytkownicy: " }
+      it { should have_content "Przedmioty: 0" }
+      it { should have_content "Lekcje: 0" }
+      it { should have_content "Filmy: 0" }
+      it { should have_content "Użytkownicy: 1" }
     end
   end
 end

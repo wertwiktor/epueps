@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   def admin?
     self.admin ? true : false
   end
+
+  def display_name
+    email # add name/login later
+  end
 end
