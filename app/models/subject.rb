@@ -1,9 +1,13 @@
 class Subject < ActiveRecord::Base
+  extend FriendlyId
+  include YoutubeUtilities
+  
   has_many :lessons, dependent: :destroy
 
   before_save :validate_link
 
-  include YoutubeUtilities
+
+  friendly_id :name, use: [:slugged, :finders]
 
   scope :popular, -> { order('popularity DESC') }
   scope :recent,   -> { order('created_at DESC') }

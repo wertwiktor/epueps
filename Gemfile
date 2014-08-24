@@ -31,6 +31,7 @@ gem 'jbuilder', '1.0.2'
 gem 'devise'
 gem 'simple_form'
 gem 'factory_girl_rails'
+gem 'friendly_id', '~> 5.0.0'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
