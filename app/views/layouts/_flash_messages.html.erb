@@ -1,0 +1,11 @@
+<section id="flash-messages" class = "container">
+  
+    <% flash.each do |type, msg| %>
+
+      <%= content_tag :div, class: "alert alert-#{type}" do %>
+        <%= msg %>
+        <span class="close-div">x</span>
+      <% end %>
+    <% end %>
+    
+</section>
