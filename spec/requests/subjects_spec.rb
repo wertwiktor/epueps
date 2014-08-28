@@ -65,8 +65,8 @@ RSpec.describe "Subjects", :type => :request do
     describe "lesson link" do
       before { click_link lesson1.name }
 
-      it "should redirect to lesson#show" do
-        expect(page).to have_css("h1", text: lesson1.name)
+      it "should redirect to subject#show" do
+        expect(page).to have_css("h1", text: subject1.name)
       end 
     end
   end

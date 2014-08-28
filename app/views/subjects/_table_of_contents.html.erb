@@ -1,5 +1,6 @@
 <ol>
 <% lessons.each do |lesson| %>
-  <li><%= link_to lesson.name, lesson_path(lesson) %></li>
+  <li><%= link_to lesson.name, subject_path(subject,
+            params: {video_id: lesson.videos.first }) %></li>
 <% end %>
 </ol>

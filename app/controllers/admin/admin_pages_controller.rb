@@ -4,8 +4,7 @@ class Admin::AdminPagesController < ApplicationController
 
   layout 'admin'
 
-
-  before_filter :authenticate_admin
+  before_action :authenticate_admin
 
   def home
     @subject_count = Subject.all.count

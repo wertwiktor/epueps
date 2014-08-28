@@ -1,9 +1,10 @@
 class Admin::UsersController < ApplicationController
-  before_filter :authenticate_admin
 
   include Admin
   
   layout 'admin'
+  
+  before_action :authenticate_admin
 
   def index
     @users = all_or_searched_users
@@ -27,9 +28,6 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-
-  
-
 
   def all_or_searched_users
     unless params[:search].nil?
