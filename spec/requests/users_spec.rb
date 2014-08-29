@@ -144,6 +144,29 @@ RSpec.describe "Users", :type => :request do
         end
 
       end
+
+      describe "sorting the table" do
+
+        # ensure that users aren't sorted by email
+        before { click_link "Administrator" }
+
+        describe "by email" do
+          before { click_link "Email" }
+
+          it do
+            should have_content /bar\@boo\.com.*foo\@bar\.com/
+          end
+
+          describe "and then in other direction" do
+            before { click_link "Email" }
+
+            it do
+              should have_content /foo\@baz.com.*bar\@boo\.com/
+            end
+          end
+        end
+
+      end
     end
   end
 

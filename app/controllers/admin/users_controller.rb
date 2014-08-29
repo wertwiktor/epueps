@@ -1,6 +1,9 @@
 class Admin::UsersController < ApplicationController
 
   include Admin
+
+  helper_method :sort_column
+  helper_method :sort_direction
   
   layout 'admin'
   
@@ -33,7 +36,23 @@ class Admin::UsersController < ApplicationController
     unless params[:search].nil?
       User.where('email ~* :pattern', pattern: params[:search]) 
     else
-      User.all 
+      get_sorted_users
+    end
+  end
+
+  def sort_column
+    params[:sort] if User.column_names.include?(params[:sort])
+  end
+
+  def sort_direction
+    params[:direction] if %{asc desc}.include?(params[:direction])
+  end
+
+  def get_sorted_users
+    unless sort_column.nil?
+      return User.order(sort_column + " " + sort_direction)
+    else
+      return User.all
     end
   end
 end
