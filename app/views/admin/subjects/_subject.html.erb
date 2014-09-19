@@ -1,0 +1,11 @@
+<tr>
+  <td><%= subject.name %></td>
+  <td><%= subject.lessons.count %></td>
+  <td><%= subject.created_at %></td>
+  <td><%= subject.popularity %></td>
+  <td>
+    <%= link_to "Usuń", 
+                admin_subject_path(subject), 
+                method: :delete %>
+  </td>
+</tr>

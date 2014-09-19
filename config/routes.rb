@@ -9,12 +9,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :subject, except: [:show, :index] do
+    resources :subjects, except: [:show] do
       resources :lessons, except: [:index, :show]
     end
 
     match '/', to: 'admin_pages#home', via: :get
   end
-  # match '/users', to: 'users#index', via: :get
 
 end

@@ -1,0 +1,19 @@
+<% provide :title, "Wszystkie przedmioty" %>
+
+<section class="admin-panel subject-index">
+  <h1>Wszystkie przedmioty</h1>
+
+
+  <table>
+    <thead>
+      <tr>Nazwa</tr>
+      <tr>Ilość lekcji</tr>
+      <tr>Data dodania</tr>
+      <tr>Popularność</tr>
+      <tr>Akcje</tr>
+    </thead>
+    <tbody>
+      <%= render @subjects %>
+    </tbody>
+  </table>
+</section>
