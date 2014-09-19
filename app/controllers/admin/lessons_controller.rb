@@ -18,7 +18,8 @@ class Admin::LessonsController < ApplicationController
 
     if @lesson.save
       flash[:success] = "Dodano lekcję"
-      redirect_to @subject
+      # TODO: Change redirect path
+      redirect_to admin_path
     else
       if @lesson.errors.any?
         flash.now[:error] = "Wystąpiły błędy w formularzu. Liczba błędów: #{@lesson.errors.count}" 

@@ -20,4 +20,37 @@ class Admin::SubjectsController < ApplicationController
       flash[:error] = "Wystąpił błąd, spróbuj ponownie"
     end
   end
+
+  def new
+    @subject = Subject.new
+  end
+
+  def create
+    @subject = Subject.new(subject_params)
+
+    if @subject.save
+      flash[:success] = "Dodano przedmiot"
+      redirect_to admin_subjects_path
+    else
+      if @subject.errors.any?
+        flash.now[:error] = %Q(
+          Wystąpiły błędy w formularzu.
+          )
+      else 
+        flash.now[:error]= "Nieznany błąd. Spróbuj ponownie później"
+      end
+      render 'new'
+    end
+
+
+  end
+
+
+  private
+
+  def subject_params
+    params.require(:subject).permit(:name, 
+                                    :intro_video_link,
+                                    :description)
+  end
 end

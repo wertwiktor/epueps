@@ -33,7 +33,7 @@ RSpec.describe "AdminSubjectPages", :type => :request do
       it { should have_content subject1.lessons.count }
       it { should have_content subject2.lessons.count }
 
-      it { should have_link "Dodaj przedmiot" }
+      it { should have_link "Nowy przedmiot" }
 
 
       describe "deleting subject" do
@@ -51,6 +51,36 @@ RSpec.describe "AdminSubjectPages", :type => :request do
         end
       end
 
+    end
+  end
+
+  describe "new subject page" do
+    before do
+      sign_in admin
+      visit new_admin_subject_path
+    end
+
+    it { should have_content "Nowy przedmiot" }
+
+    it { should have_button "Dodaj przedmiot" } 
+
+    describe "creating new subject" do
+      before do
+        fill_in "Nazwa",      with: "Przedmiot"
+        fill_in "Opis",       with: "Opis"
+        fill_in "Trailer",    with: "youtube.com/watch?v=123"
+      end
+
+      it "should change the subject count" do
+        expect { click_button "Dodaj przedmiot" }.
+          to change(Subject, :count).by(1)
+      end
+
+      describe "flash message" do
+        before { click_button "Dodaj przedmiot" }
+
+        it { should have_content "Dodano przedmiot" }
+      end
     end
   end
 end
