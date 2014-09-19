@@ -33,6 +33,24 @@ RSpec.describe "AdminSubjectPages", :type => :request do
       it { should have_content subject1.lessons.count }
       it { should have_content subject2.lessons.count }
 
+      it { should have_link "Dodaj przedmiot" }
+
+
+      describe "deleting subject" do
+        
+        describe "flash message" do
+          before { click_link "Usuń", 
+                   href: admin_subject_path(subject1)}
+          it { should have_content "Usunięto przedmiot" }
+        end
+
+        it "should change the subject count" do
+          expect { click_link "Usuń", 
+                   href: admin_subject_path(subject1) }.
+            to change(Subject, :count).by(-1)
+        end
+      end
+
     end
   end
 end

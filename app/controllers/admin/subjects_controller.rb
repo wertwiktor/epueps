@@ -19,6 +19,5 @@ class Admin::SubjectsController < ApplicationController
     else 
       flash[:error] = "Wystąpił błąd, spróbuj ponownie"
     end
-
   end
 end
