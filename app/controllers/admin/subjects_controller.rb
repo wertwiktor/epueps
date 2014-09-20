@@ -32,16 +32,16 @@ class Admin::SubjectsController < ApplicationController
 
     if @subject.save
       flash[:success] = "Dodano przedmiot"
-      redirect_to admin_subjects_path
+      redirect_to admin_subjects_path and return
     elsif @subject.errors.any?
       flash.now[:error] = %Q(
         Wystąpiły błędy w formularzu.
         )
-      render 'new'
     else 
       flash.now[:error]= "Nieznany błąd. Spróbuj ponownie później"
-      render 'new'
     end
+
+    render 'new'
   end
 
 
