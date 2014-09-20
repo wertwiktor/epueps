@@ -83,4 +83,42 @@ RSpec.describe "AdminSubjectPages", :type => :request do
       end
     end
   end
+
+  describe "edit subject page" do
+    before do 
+      sign_in admin
+      visit edit_admin_subject_path(subject1)
+    end
+
+    it { should have_content "Edycja - #{subject1.name}" }
+    it { should have_button "Zapisz zmiany" }
+
+    describe "saving changes" do
+      context "with invalid data" do
+        before do
+          fill_in "Nazwa",      with: ""
+          fill_in "Opis",       with: ""
+          fill_in "Trailer",    with: ""
+          click_button "Zapisz zmiany"
+        end
+
+        it { should have_content "Wystąpiły błędy" }
+      end
+
+      context "with valid data" do
+        before do
+          fill_in "Nazwa",      with: "Subject3"
+          fill_in "Opis",       with: "Desc3"
+          fill_in "Trailer",    with: "youtube.com/watch?v=123"
+          click_button "Zapisz zmiany"
+        end
+
+        it { should have_content "Zaktualizowano przedmiot" }
+
+        # redirect to subject index page
+        it { should have_content "Wszystkie przedmioty" }
+        it { should have_content "Subject3" }
+      end
+    end
+  end
 end

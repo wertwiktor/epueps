@@ -5,14 +5,13 @@ class Admin::SubjectsController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_admin
+  before_action :set_subject_from_id, only: [:destroy, :edit, :update]
 
   def index
     @subjects = Subject.all
   end
 
   def destroy
-    @subject = Subject.find(params[:id])
-
     if @subject.destroy
       flash[:success] = "Usunięto przedmiot"
       redirect_to :back
@@ -41,8 +40,22 @@ class Admin::SubjectsController < ApplicationController
       end
       render 'new'
     end
+  end
 
+  def edit
+  end
 
+  def update
+    if @subject.update_attributes(subject_params)
+      flash[:success] = "Zaktualizowano przedmiot"
+      redirect_to admin_subjects_path
+    elsif @subject.errors.any?
+      flash.now[:error] = "Wystąpiły błędy w formularzu"
+      render 'edit'
+    else
+      flash.now[:error] = "Wystąpił nieznany błąd. Spróbuj ponownie później"
+      render 'edit'
+    end
   end
 
 
@@ -52,5 +65,14 @@ class Admin::SubjectsController < ApplicationController
     params.require(:subject).permit(:name, 
                                     :intro_video_link,
                                     :description)
+  end
+
+  def set_subject_from_id
+    @subject = Subject.find(params[:id])
+
+    if @subject.nil?
+      flash[:error] = "Nie znaleziono takiego przedmiotu"
+      redirect_to admin_subjects_path
+    end
   end
 end
