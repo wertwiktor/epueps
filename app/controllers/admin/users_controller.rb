@@ -32,6 +32,8 @@ class Admin::UsersController < ApplicationController
 
   private
 
+  # TODO: Move this to seperate class & then add this feature to other tables
+
   def all_or_searched_users
     unless params[:search].nil?
       User.where('email ~* :pattern', pattern: params[:search]) 
