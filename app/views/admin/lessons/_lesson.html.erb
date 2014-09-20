@@ -1,5 +1,6 @@
 <tr>
-  <td><%= lesson.name %></td>
+  <td><%= link_to lesson.name, 
+                  admin_subject_lesson_path(lesson.subject, lesson) %></td>
   <!-- TODO: Optimize this(Too many queries) -->
   <td><%= lesson.videos.count %></td>
   <td><%= lesson.created_at %></td>

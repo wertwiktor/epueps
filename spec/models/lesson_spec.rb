@@ -51,6 +51,13 @@ describe Lesson do
     end
   end
 
+
+  describe "to_s method" do
+    it "should return lesson's name" do
+      expect(@lesson.to_s). to eq @lesson.name
+    end
+  end
+
   describe "new lesson" do
     before do
       @new_lesson = Lesson.new(name: "new", description: "desc", 

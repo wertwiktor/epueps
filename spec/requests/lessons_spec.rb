@@ -5,14 +5,20 @@ describe "Lessons" do
 
 	let(:admin) { FactoryGirl.create(:admin) }
 	let!(:subject1) { FactoryGirl.create(:subject) }
+	let!(:lesson) { FactoryGirl.create(:lesson, subject_id: subject1.id) }
+	let!(:video) { FactoryGirl.create(:video, lesson_id: lesson.id) }
+
+	before do
+		sign_in admin
+	end
 
 	describe "new" do
-		before { sign_in admin }
 		
 		before { visit new_admin_subject_lesson_path(subject1) }
 		
 		it { should have_title admin_title("Nowa lekcja") }
 		it { should have_content "Nowa lekcja" }
+		it { should have_content subject1.name }
 		it { should have_selector "form" }
 
 
@@ -27,7 +33,7 @@ describe "Lessons" do
 			end
 
 			it { should have_content "Dodano lekcję" }
-			it { should have_content @lesson.name }
+			it { should have_content @lesson }
 		end
 
 		describe "for blank data" do
@@ -35,6 +41,28 @@ describe "Lessons" do
 
 			it { should have_content "Wystąpiły błędy w formularzu." }
 		end
+
+	end
+
+	describe "show" do
+		before { visit admin_subject_lesson_path(subject1, lesson) }
+
+		it { should have_title admin_title(lesson) }
+		it { should have_content lesson }
+		it { should have_content subject1 } 
+
+
+		it { should have_link "Usuń", 
+					href: admin_subject_lesson_path(subject1, lesson) }
+		it { should have_link "Edytuj", 
+					href: edit_admin_subject_lesson_path(subject1, lesson) }
+		it { should have_link "Dodaj film", 
+					href: new_admin_subject_lesson_video_path(subject1, lesson) }
+
+
+		it { should have_content "Filmy" }
+
+		it { should have_content video.name }
 
 	end
 

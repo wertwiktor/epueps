@@ -37,7 +37,7 @@ RSpec.describe "Users", :type => :request do
   describe "sign up page" do
     before { visit new_user_registration_path }
 
-    it { should have_title normal_title("Zarejestruj się") }
+    it { should have_title normal_title("Rejestracja") }
     it { should have_content "Rejestracja" }
     it { should have_content "Email" }
     it { should have_content "Hasło" }

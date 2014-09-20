@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :subjects do
-      resources :lessons, except: [:index, :show]
+      resources :lessons, except: [:index] do
+        resources :videos, except: [:show, :index] 
+      end
     end
 
     match '/', to: 'admin_pages#home', via: :get

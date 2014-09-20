@@ -31,6 +31,13 @@ describe Subject do
 		it { should be_valid }
 	end
 
+
+	describe "to_s method" do
+		it "should return subject's name" do
+			expect(@subject.to_s).to eq @subject.name
+		end
+	end
+
 	describe "when intro_video_link is blank" do
 		before { @subject.intro_video_link = " " }
 		it { should be_valid }

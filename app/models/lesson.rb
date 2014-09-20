@@ -39,6 +39,10 @@ class Lesson < ActiveRecord::Base
     end
   end
 
+  def to_s
+    self.name
+  end
+
   private
 
   def add_example_video

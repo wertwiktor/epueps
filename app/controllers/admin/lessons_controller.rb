@@ -18,8 +18,7 @@ class Admin::LessonsController < ApplicationController
 
     if @lesson.save
       flash[:success] = "Dodano lekcję"
-      # TODO: Change redirect path
-      redirect_to admin_path
+      redirect_to admin_subject_path(@subject)
     else
       if @lesson.errors.any?
         flash.now[:error] = "Wystąpiły błędy w formularzu. Liczba błędów: #{@lesson.errors.count}" 
@@ -28,6 +27,25 @@ class Admin::LessonsController < ApplicationController
       end
       render 'new'
     end
+  end
+
+  def show
+    @lesson = Lesson.find(params[:id])
+    @subject = @lesson.subject
+    @videos = @lesson.videos
+  end
+
+  def destroy
+    @lesson = Lesson.find(params[:id])
+
+    if @lesson.destroy
+      flash[:success] = "Usunięto lekcję"
+      redirect_to admin_subject_path(@lesson.subject)
+    else
+      flash[:error] = "Wystąpił błąd. Spróbuj ponownie później"
+    end
+
+
   end
 
   private

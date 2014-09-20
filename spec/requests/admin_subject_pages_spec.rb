@@ -136,13 +136,13 @@ RSpec.describe "AdminSubjectPages", :type => :request do
     it { should have_title admin_title("#{subject1.name}") }
     it { should have_content "#{subject1.name}" }
 
+    it { should have_link "Nowa lekcja" }
     it { should have_link "Usuń" }
     it { should have_link "Edytuj" }
     
-    it { should have_content "Lekcje z tego przedmiotu" }
+    it { should have_content "Lekcje" }
 
     it { should have_content lesson1.name }
 
-    it { should have_button "Nowa lekcja" }
   end
 end

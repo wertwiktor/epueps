@@ -1,5 +1,6 @@
 <tr>
-  <td><%= subject.name %></td>
+  <td><%= link_to subject.name, 
+          admin_subject_path(subject) %></td>
   <!-- TODO: Optimize this(Too many queries) -->
   <td><%= subject.lessons.count %></td>
   <td><%= subject.created_at %></td>
