@@ -14,6 +14,7 @@ RSpec.describe "Users", :type => :request do
 
     it { should have_content "Zaloguj się" }
     it { should have_link "Zaloguj się" }
+    it { should have_title normal_title("Zaloguj się") }
 
     describe "after signing in with valid data" do
       before do
@@ -36,6 +37,7 @@ RSpec.describe "Users", :type => :request do
   describe "sign up page" do
     before { visit new_user_registration_path }
 
+    it { should have_title normal_title("Zarejestruj się") }
     it { should have_content "Rejestracja" }
     it { should have_content "Email" }
     it { should have_content "Hasło" }
@@ -96,6 +98,7 @@ RSpec.describe "Users", :type => :request do
         visit admin_users_path
       end
 
+      it { should have_title admin_title("Wszyscy użytkownicy") }
       it { should have_content "Wszyscy użytkownicy" }
       it { should have_link "Usuń", href: admin_user_path(user) }
       it { should_not have_link "Usuń", href: admin_user_path(admin) }

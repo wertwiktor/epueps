@@ -10,8 +10,11 @@ describe "Lessons" do
 		before { sign_in admin }
 		
 		before { visit new_admin_subject_lesson_path(subject1) }
+		
+		it { should have_title admin_title("Nowa lekcja") }
 		it { should have_content "Nowa lekcja" }
 		it { should have_selector "form" }
+
 
 		describe "it should create a new lesson" do
 			before do

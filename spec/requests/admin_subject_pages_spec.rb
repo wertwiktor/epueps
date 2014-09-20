@@ -22,6 +22,7 @@ RSpec.describe "AdminSubjectPages", :type => :request do
         visit admin_subjects_path 
       end
 
+      it { should have_title admin_title("Wszystkie przedmioty") }
       it { should have_content "Wszystkie przedmioty" }
 
       it { should have_content "S1" } 
@@ -62,6 +63,7 @@ RSpec.describe "AdminSubjectPages", :type => :request do
       visit new_admin_subject_path
     end
 
+    it { should have_title admin_title("Nowy przedmiot") }
     it { should have_content "Nowy przedmiot" }
 
     it { should have_button "Dodaj przedmiot" } 
@@ -92,6 +94,7 @@ RSpec.describe "AdminSubjectPages", :type => :request do
       visit edit_admin_subject_path(subject1)
     end
 
+    it { should have_title admin_title("Edycja - #{subject1.name}") }
     it { should have_content "Edycja - #{subject1.name}" }
     it { should have_button "Zapisz zmiany" }
 

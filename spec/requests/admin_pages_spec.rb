@@ -27,6 +27,7 @@ RSpec.describe "AdminPages", :type => :request do
         visit admin_path
       end
 
+      it { should have_title admin_title("Panel administracyjny") }
       it { should have_content "Panel administracyjny" }
       it { should have_content "Zalogowano jako: #{admin.email}" }
 

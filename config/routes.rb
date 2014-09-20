@@ -2,14 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#home'
 
-  resources :subjects, only: [:index, :show], shallow: true do
+  resources :subjects, only: [:index, :show] do
     get 'info'
-    resources :lessons, only: [:show]
   end 
 
   namespace :admin do
     resources :users
-    resources :subjects, except: [:show] do
+    resources :subjects do
       resources :lessons, except: [:index, :show]
     end
 

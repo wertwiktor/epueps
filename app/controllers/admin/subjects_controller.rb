@@ -5,10 +5,11 @@ class Admin::SubjectsController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_admin
-  before_action :set_subject_from_id, only: [:destroy, :edit, :update]
+  before_action :set_subject_from_id, only: [:show, :destroy, :edit, :update]
 
 
   # Add sortable table after moving sorting code to seperate class
+
   def index
     @subjects = Subject.all
   end
