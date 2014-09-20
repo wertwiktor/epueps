@@ -290,3 +290,58 @@ h1 {
   font-size: 0.95em;
 }
 
+
+table.primary-table {
+
+    border-collapse: collapse;
+    border: 1px solid #c5c5c5;
+
+    line-height: 2.5em;
+
+    thead {
+      background: #eb8a45;
+      color: #fff;
+      padding: 1em;
+
+      tr {
+        background: inherit;
+      }
+    } 
+
+    th {
+      font-weight: normal;
+
+      
+      a { 
+        color: inherit;
+        text-decoration: none;
+      }
+      // TODO: Change the images later
+      .current {
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding: 20px
+      }
+      .asc {
+         background-image: image-url("sortable_tables/up.png");
+      }
+      .desc {
+         background-image: image-url("sortable_tables/down.png");
+      }
+
+    }
+
+    tr {
+      border: 1px solid #c5c5c5;
+      background: #E6E6E6;
+
+      &:nth-child(even) {
+        background: #D8D8D8;
+      }
+    }
+
+    td, th {
+      padding: 0 1.5em;
+    }
+  }
+
