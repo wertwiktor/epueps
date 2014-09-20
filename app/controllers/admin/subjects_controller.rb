@@ -30,20 +30,17 @@ class Admin::SubjectsController < ApplicationController
     if @subject.save
       flash[:success] = "Dodano przedmiot"
       redirect_to admin_subjects_path
-    else
-      if @subject.errors.any?
-        flash.now[:error] = %Q(
-          Wystąpiły błędy w formularzu.
-          )
-      else 
-        flash.now[:error]= "Nieznany błąd. Spróbuj ponownie później"
-      end
+    elsif @subject.errors.any?
+      flash.now[:error] = %Q(
+        Wystąpiły błędy w formularzu.
+        )
+      render 'new'
+    else 
+      flash.now[:error]= "Nieznany błąd. Spróbuj ponownie później"
       render 'new'
     end
   end
 
-  def edit
-  end
 
   def update
     if @subject.update_attributes(subject_params)

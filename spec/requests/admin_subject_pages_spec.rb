@@ -28,7 +28,9 @@ RSpec.describe "AdminSubjectPages", :type => :request do
       it { should have_content "S2" }
 
       it { should have_link "Usuń", 
-             href: admin_subject_path(subject2) }
+            href: admin_subject_path(subject2) }
+      it { should have_link "Edytuj",
+            href: edit_admin_subject_path(subject2) }
 
       it { should have_content subject1.lessons.count }
       it { should have_content subject2.lessons.count }
