@@ -1,0 +1,40 @@
+<% provide :title, "#{@subject.name}" %>
+
+
+<section class="admin-panel">
+  
+  <h1><%= @subject.name%></h1>
+
+  <div class="subject-actions">
+    <%= link_to "Nowa lekcja",
+                new_admin_subject_lesson_path(@subject),
+                class: "button button-secondary" %>
+
+    <!-- TODO: Add confirmation -->
+    <%= link_to "Usuń", 
+                admin_subject_path(@subject), 
+                method: :delete,
+                class: "button button-secondary" %>
+    <%= link_to "Edytuj", 
+                edit_admin_subject_path(@subject),
+                class: "button button-secondary" %>
+  </div>
+
+  <h2>Lekcje z tego przedmiotu</h2>
+
+    <table class ="primary-table">
+      <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>Ilość filmów</th>
+          <th>Data dodania</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @subject.lessons %>
+      </tbody>
+    </table>
+  
+
+</section>

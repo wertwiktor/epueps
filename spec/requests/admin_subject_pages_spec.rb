@@ -126,4 +126,23 @@ RSpec.describe "AdminSubjectPages", :type => :request do
       end
     end
   end
+
+  describe "show subject page" do
+    before do
+      sign_in admin
+      visit admin_subject_path(subject1)
+    end
+
+    it { should have_title admin_title("#{subject1.name}") }
+    it { should have_content "#{subject1.name}" }
+
+    it { should have_link "Usuń" }
+    it { should have_link "Edytuj" }
+    
+    it { should have_content "Lekcje z tego przedmiotu" }
+
+    it { should have_content lesson1.name }
+
+    it { should have_button "Nowa lekcja" }
+  end
 end
