@@ -1,9 +1,0 @@
-<% provide :title, @lesson.name %>
-
-<h1><%= @lesson.name %></h1>
-<div class = "lesson-video-container">
-	<iframe class = "lesson-video" 
-					src = <%= @current_lesson_video.embed_link %> 
-					allowfullscreen>
-	</iframe>
-</div>
