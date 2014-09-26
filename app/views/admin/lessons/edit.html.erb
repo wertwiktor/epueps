@@ -1,0 +1,10 @@
+<% provide :title, "Edycja - #{@lesson}" %>
+
+<section class="admin-panel">
+  <h2><%= @subject %></h2>
+  <h1>Edycja - <%= @lesson %></h1>
+
+  <div id="edit-lesson-form">
+    <%= render 'admin/lessons/edit_lesson_form' %>
+  </div>
+</section>

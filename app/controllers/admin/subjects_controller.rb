@@ -5,7 +5,7 @@ class Admin::SubjectsController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_admin
-  before_action :set_subject_from_id, only: [:show, :destroy, :edit, :update]
+  before_action :set_subject, only: [:show, :destroy, :edit, :update]
 
 
   # Add sortable table after moving sorting code to seperate class
@@ -67,7 +67,7 @@ class Admin::SubjectsController < ApplicationController
                                     :description)
   end
 
-  def set_subject_from_id
+  def set_subject
     @subject = Subject.find(params[:id])
 
     if @subject.nil?

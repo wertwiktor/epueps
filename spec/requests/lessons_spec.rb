@@ -66,4 +66,39 @@ describe "Lessons" do
 
 	end
 
+	describe "edit" do
+		before { visit edit_admin_subject_lesson_path(subject1, lesson) }
+
+		it { should have_title admin_title("Edycja - #{lesson}") }
+		it { should have_content "Edycja - #{lesson}" }
+		it { should have_content subject1.name }
+
+		it { should have_button "Zapisz zmiany" }
+
+		describe "saving changes" do
+			context "with invalid data" do
+				before do 
+					fill_in "Nazwa",		with: ""
+					fill_in "Opis",			with: ""
+
+					click_button "Zapisz zmiany"
+				end
+
+				it { should have_content "Wystąpiły błędy" }
+			end
+
+			context "with valida data" do
+				before do
+					fill_in "Nazwa", 		with: "New lesson"
+					fill_in "Opis",			with: "Description"
+
+					click_button "Zapisz zmiany"
+				end
+
+				it { should have_content "Zaktualizowano lekcję" }
+				it { should have_content "New lesson" }
+			end
+		end
+	end
+
 end
