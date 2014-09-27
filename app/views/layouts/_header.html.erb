@@ -8,6 +8,9 @@
 				<li><%= link_to "Wszystkie kursy", subjects_path %></li>
 				<li><%= link_to "O platformie", '#' %></li>
 
+				<% if user_signed_in? && current_user.admin? %>
+					<li><%= link_to "Panel administracyjny", admin_path %></li>
+				<% end %>
 
 				<li><%= sign_in_out_link %></li>
 			</ul>
@@ -17,17 +20,7 @@
 
 
 <!-- TODO: Make flash position: fixed and auto hide -->
-<section id="flash-messages" class = "container">
-	
-		<% flash.each do |type, msg| %>
-
-			<%= content_tag :div, class: "alert alert-#{type}" do %>
-				<%= msg %>
-				<span class="close-div">x</span>
-			<% end %>
-		<% end %>
-		
-</section>
+<%= render 'layouts/flash_messages' %>
 
 <% unless @splash %>
 	<div class = "container">

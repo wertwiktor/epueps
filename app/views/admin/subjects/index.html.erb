@@ -1,0 +1,25 @@
+<% provide :title, "Wszystkie przedmioty" %>
+
+<section class="admin-panel subject-index">
+  <h1>Wszystkie przedmioty</h1>
+
+  <div class = "subject-actions">
+    <%= link_to "Nowy przedmiot", new_admin_subject_path, 
+        class: "button button-secondary" %>
+  </div>
+
+<table class ="primary-table">
+  <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Ilość lekcji</th>
+      <th>Data dodania</th>
+      <th>Popularność</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @subjects %>
+  </tbody>
+</table>
+</section>

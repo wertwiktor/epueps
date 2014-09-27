@@ -1,0 +1,34 @@
+<% provide :title, "Wszyscy użytkownicy" %>
+
+<section class = "users-index admin-panel">
+  <h1>Wszyscy użytkownicy</h1>
+
+  <section class="search">
+    <%= form_tag admin_users_path, method: :get do %>
+      <%= search_field_tag 'search'  %>
+      <%= submit_tag 'Szukaj' %>
+    <% end %>
+
+    <% unless @search_params.nil? %>
+      <div class="search-params">
+        Kryteria: <%= @search_params %> | 
+        <%= link_to "Powrót", admin_users_path %>
+      </div>
+    <% end %>
+  </section>
+
+  <table class="primary-table">
+    <thead>
+      <tr>
+        <th><%= sortable "email" %></th>
+        <th><%= sortable "last_sign_in_at", "Ostatnio zalogowany" %></th>
+        <th><%= sortable "last_sign_in_ip", "IP logowania" %></th>
+        <th><%= sortable "admin", "Administrator" %></th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+</section>

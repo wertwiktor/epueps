@@ -1,0 +1,17 @@
+<header id = "page-header">
+  <div class = "container">
+    <div id="logo"><%= link_to "ePUEPS - Admin", admin_path %></div>
+
+    <nav id="main-menu">
+      <ul>
+        <li><%= link_to "Powrót do witryny", root_path %></li>
+
+
+        <li><%= sign_in_out_link %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<%= render 'layouts/flash_messages' %>

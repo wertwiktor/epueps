@@ -6,7 +6,7 @@
   <section class="table-of-contents">
     <h2>Dostępne lekcje</h2>
     <%= render partial: 'subjects/table_of_contents',
-        locals: {lessons: @lessons} %>
+        locals: {lessons: @lessons, subject: @subject} %>
   </section>
   <section class="description">
     <h2>Opis przedmiotu</h2>

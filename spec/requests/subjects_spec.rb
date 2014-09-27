@@ -18,7 +18,7 @@ RSpec.describe "Subjects", :type => :request do
 
     before { visit subjects_path }
 
-    it { should have_title "Platforma ePUEPS | Wszystkie kursy" }
+    it { should have_title normal_title("Wszystkie kursy") }
     it { should_not have_content "Witamy" }
     it { should_not have_link "Przeglądaj kursy" }
     it { should have_selector("h1", text: "Wszystkie kursy") }
@@ -51,7 +51,7 @@ RSpec.describe "Subjects", :type => :request do
         subject_id: subject1.id)}
     before { visit subject_info_path(subject1) }
 
-    it { should have_title "#{subject1.name} - informacje" }
+    it { should have_title normal_title("#{subject1.name} - informacje") }
     it { should have_content subject1.name}
     it { should have_content subject1.description }
     it { should have_content "Dostępne lekcje" }
@@ -65,8 +65,8 @@ RSpec.describe "Subjects", :type => :request do
     describe "lesson link" do
       before { click_link lesson1.name }
 
-      it "should redirect to lesson#show" do
-        expect(page).to have_css("h1", text: lesson1.name)
+      it "should redirect to subject#show" do
+        expect(page).to have_css("h1", text: subject1.name)
       end 
     end
   end
@@ -101,7 +101,9 @@ RSpec.describe "Subjects", :type => :request do
 
         visit subject_path(subject1)
       end
+
       it { should have_content subject1.name }
+      it { should have_title normal_title("#{subject1.name}") }
       it { should have_link @lesson.name }
 
       it { should have_link "video 1" }

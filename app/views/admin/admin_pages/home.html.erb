@@ -1,0 +1,15 @@
+<% provide :title, "Panel administracyjny" %>
+
+<section class="admin-panel">
+  <h1>Panel administracyjny</h1>
+  <h2>Zalogowano jako: <%= current_user.display_name %></h2>
+  <section class="stats">
+    <ul>
+      <li>Przedmioty: <%= @subject_count %></li>
+      <li>Lekcje: <%= @lesson_count %></li>
+      <li>Filmy: <%= @video_count %></li>
+      <li>Użytkownicy: <%= @user_count %></li>
+    </ul>
+  </section>
+</section>
+

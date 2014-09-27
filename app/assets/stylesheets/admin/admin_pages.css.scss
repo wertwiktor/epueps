@@ -1,0 +1,23 @@
+// Place all the styles related to the admin/admin_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$sidebar-width: 5em;
+
+.admin-sidebar {
+  width: $sidebar-width;
+  background: #2c3b4b;
+  position: fixed;
+  left: 0;
+  top: 4em;
+  text-align: center;
+
+  img {
+    width: 2.3em;
+  }
+}
+
+.admin-panel {
+  padding-left: $sidebar-width - 1em;
+}
+

@@ -24,6 +24,10 @@ class Video < ActiveRecord::Base
     "https://img.youtube.com/vi/#{self.video_id}/1.jpg"
   end
 
+  def to_s
+    name
+  end
+
 
 
   protected

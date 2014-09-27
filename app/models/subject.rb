@@ -36,6 +36,10 @@ class Subject < ActiveRecord::Base
     self.popularity += 1
   end
 
+  def to_s
+    name
+  end
+
 
   protected
 

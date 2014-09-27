@@ -1,0 +1,16 @@
+<tr>
+  <td><%= link_to subject.name, 
+          admin_subject_path(subject) %></td>
+  <!-- TODO: Optimize this(Too many queries) -->
+  <td><%= subject.lessons.count %></td>
+  <td><%= subject.created_at %></td>
+  <td><%= subject.popularity %></td>
+  <td>
+    <!-- TODO: Add confirmation -->
+    <%= link_to "Usuń", 
+                admin_subject_path(subject), 
+                method: :delete %>
+    <%= link_to "Edytuj", 
+                edit_admin_subject_path(subject) %>
+  </td>
+</tr>
