@@ -1,9 +1,12 @@
+
+
+
 <%= simple_form_for @subject,
-                    url: admin_subject_path(@subject),
+                    url: subject_form_url(@subject),
                     html: { class: "custom-form"} do |f| %>
   <%= f.input :name,              label: "Nazwa" %>
   <%= f.input :description,       label: "Opis" %>
   <%= f.input :intro_video_link,  label: "Trailer" %>
-  <%= f.submit  "Zapisz zmiany", 
+  <%= f.submit  subject_form_submit(@subject), 
                 class: "button button-primary" %>
 <% end %>
