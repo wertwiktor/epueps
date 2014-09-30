@@ -1,10 +1,10 @@
 <!-- TODO: JS form validation -->
 
 <%= simple_form_for @lesson, 
-                    url: admin_subject_lessons_path(@subject, @lesson),
+                    url: lesson_form_url(@subject, @lesson),
                     html: {class: "custom-form"} do |f| %>
   <%= f.input :name,        label: "Nazwa" %>
   <%= f.input :description, label: "Opis" %>
-  <%= f.submit  'Dodaj lekcję',
+  <%= f.submit  lesson_form_submit(@lesson),
                 class: 'button button-primary' %>
 <% end %>
