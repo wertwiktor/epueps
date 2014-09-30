@@ -2,12 +2,12 @@
 
 
 <%= simple_form_for @video, 
-      url: admin_subject_lesson_videos_path(@subject, @lesson, @video),
+      url: video_form_url(@subject, @lesson, @video),
       html: { class: "custom-form" } do |f| %>
   
   <%= f.input :name,    label: "Nazwa" %>
   <%= f.input :link,    label: "Link" %>
-  <%= f.submit "Dodaj film",
+  <%= f.submit video_form_submit(@video),
                 class: "button button-primary" %>
   
 <% end %>
