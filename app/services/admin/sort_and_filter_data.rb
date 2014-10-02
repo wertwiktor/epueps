@@ -10,7 +10,7 @@ class Admin::SortAndFilterData
   end
 
   def call
-    all_or_searched_users
+    all_or_searched_data
   end
 
   def params
@@ -19,11 +19,11 @@ class Admin::SortAndFilterData
 
   private
 
-  def all_or_searched_users
+  def all_or_searched_data
     unless params[:search].nil?
       @model.where('email ~* :pattern', pattern: params[:search]) 
     else
-      get_sorted_users
+      get_sorted_data
     end
   end
 
@@ -36,7 +36,7 @@ class Admin::SortAndFilterData
   end
 
   
-  def get_sorted_users
+  def get_sorted_data
     unless sort_column.nil?
       return @model.order(sort_column + " " + sort_direction)
     else
