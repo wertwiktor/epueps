@@ -20,10 +20,10 @@
   <table class="primary-table">
     <thead>
       <tr>
-        <th><%= sortable "email" %></th>
-        <th><%= sortable "last_sign_in_at", "Ostatnio zalogowany" %></th>
-        <th><%= sortable "last_sign_in_ip", "IP logowania" %></th>
-        <th><%= sortable "admin", "Administrator" %></th>
+        <th><%= sortable @users, "email" %></th>
+        <th><%= sortable @users, "last_sign_in_at", "Ostatnio zalogowany" %></th>
+        <th><%= sortable @users, "last_sign_in_ip", "IP logowania" %></th>
+        <th><%= sortable @users, "admin", "Administrator" %></th>
         <th>Akcje</th>
       </tr>
     </thead>
