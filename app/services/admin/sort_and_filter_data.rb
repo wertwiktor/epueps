@@ -20,6 +20,9 @@ class Admin::SortAndFilterData
   private
 
   def all_or_searched_data
+
+    raise 'Params not present' if params.nil?
+
     unless params[:search].nil?
       @model.where('email ~* :pattern', pattern: params[:search]) 
     else
