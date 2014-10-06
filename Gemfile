@@ -6,6 +6,7 @@ gem 'rails', '4.1.1'
 
 group :development, :test do
   gem 'rspec-rails', '~>3.0.0'
+  gem 'bullet'
 end
 
 group :development do
@@ -13,6 +14,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'guard-rspec', require: false
+
 end
 
 group :test do

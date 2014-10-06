@@ -37,6 +37,9 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    bullet (4.13.2)
+      activesupport (>= 3.0.0)
+      uniform_notifier (>= 1.6.0)
     callsite (0.0.11)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -212,6 +215,7 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uniform_notifier (1.6.2)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
@@ -224,6 +228,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bullet
   capybara (~> 2.2.0)
   coffee-rails (= 4.0.1)
   devise

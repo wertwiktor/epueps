@@ -16,14 +16,13 @@ class SubjectsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
-      format.json
     end
 
   end
 
   def show
   	@subject = Subject.find(params[:id])
-  	@lessons = @subject.lessons.all
+  	@lessons = @subject.lessons.includes(:videos).all
     
     # TODO: Load from user profile
 

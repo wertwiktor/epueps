@@ -7,7 +7,7 @@ class Lesson < ActiveRecord::Base
 
   after_save :add_example_video
 
-  belongs_to :subject
+  belongs_to :subject, counter_cache: true
 
   validates :subject_id,  presence: true
   validates :name,        presence:  
