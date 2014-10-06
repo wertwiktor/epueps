@@ -1,9 +1,11 @@
 class Video < ActiveRecord::Base
   include YoutubeUtilities
 
-  belongs_to :lesson
-
   before_save :validate!
+
+
+  belongs_to :lesson, counter_cache: true
+
 
   validates :link,
             presence: { message: "Link do filmu nie może być pusty" },

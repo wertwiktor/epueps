@@ -2,7 +2,7 @@
   <td><%= link_to lesson.name, 
                   admin_subject_lesson_path(@subject, lesson) %></td>
   <!-- TODO: Optimize this(Too many queries) -->
-  <td><%= lesson.videos.count %></td>
+  <td><%= lesson.videos_count %></td>
   <td><%= lesson.created_at %></td>
   <td>
     <!-- TODO: Add confirmation -->

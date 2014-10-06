@@ -5,9 +5,9 @@ class Lesson < ActiveRecord::Base
             dependent: :destroy, 
             after_add: :destroy_example_video
 
-  after_save :add_example_video
-
   belongs_to :subject, counter_cache: true
+
+  after_save :add_example_video
 
   validates :subject_id,  presence: true
   validates :name,        presence:  
