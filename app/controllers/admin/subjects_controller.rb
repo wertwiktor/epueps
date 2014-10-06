@@ -11,7 +11,7 @@ class Admin::SubjectsController < ApplicationController
   # Add sortable table after moving sorting code to seperate class
 
   def index
-    @subjects = Subject.all
+    @subjects = SortAndFilterData.call(Subject, params)
   end
 
   def destroy

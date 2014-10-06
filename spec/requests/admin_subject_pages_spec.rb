@@ -54,6 +54,23 @@ RSpec.describe "AdminSubjectPages", :type => :request do
         end
       end
 
+      describe "sorting the table" do
+
+          describe "by lessons count" do
+            before { click_link "Liczba lekcji" }
+
+            it { should have_content /S2.*S1/ }
+
+            describe "and then in the other direction" do
+              before { click_link "Liczba lekcji" }
+
+              it { should have_content /S1.*S2/ }
+            end
+          end
+
+
+      end
+
     end
   end
 
