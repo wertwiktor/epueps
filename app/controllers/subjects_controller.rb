@@ -3,15 +3,7 @@ class SubjectsController < ApplicationController
   include CurrentVideo
 
   def index
-    @scope = subjects_scope
-
-    if @scope == "popular"
-      @subjects = Subject.popular
-    else
-      @subjects = Subject.recent
-    end
-
-    cookies[:subject_scope] = @scope
+    @subjects = ShowAllSubjects.call(params, cookies)
 
     respond_to do |format|
       format.html

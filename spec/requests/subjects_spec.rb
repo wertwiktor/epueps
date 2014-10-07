@@ -33,6 +33,12 @@ RSpec.describe "Subjects", :type => :request do
       before { click_link "Popularne" }
 
       it { should have_content /S2.*S1/ }
+
+      describe "after page reload" do
+        before { visit subjects_path }
+
+        it { should have_content /S2.*S1/ }
+      end
     end
     describe "subjects ordered by most recent" do
       before { click_link "Najnowsze" }
