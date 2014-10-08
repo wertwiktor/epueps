@@ -37,6 +37,19 @@ describe Lesson do
   	it { should_not be_valid }
   end
 
+  describe "default scope" do
+    before do
+      @lesson2 = Lesson.create!(
+        name: "lesson2",
+        description: "desc",
+        subject_id: @subject.id)
+    end
+
+    it "should be ordered by created_at ASC" do
+      expect(Lesson.all).to eq [@lesson, @lesson2]
+    end
+  end
+
   describe "deleting lesson" do
     before { @lesson.destroy! }
 

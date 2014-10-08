@@ -6,6 +6,8 @@ class Video < ActiveRecord::Base
 
   belongs_to :lesson, counter_cache: true
 
+  default_scope { order('created_at ASC') }
+
 
   validates :link,
             presence: { message: "Link do filmu nie może być pusty" },

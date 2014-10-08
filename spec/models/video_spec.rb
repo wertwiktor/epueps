@@ -69,4 +69,18 @@ RSpec.describe Video, :type => :model do
       expect(@video.thumbnail).to eq "https://img.youtube.com/vi/5ca8p5OWniI/1.jpg"
     end
   end
+
+  describe "default scope" do
+    before do
+     @video2 = Video.create!(
+       name: "abc", 
+       link: "youtube.com/watch?v=123",
+       signed_in_only: false,
+       lesson_id: lesson.id)
+    end
+
+    it "should be ordered by created_at ASC" do
+      expect(Video.all).to eq [@video, @video2]
+    end
+  end
 end

@@ -7,6 +7,8 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :subject, counter_cache: true
 
+  default_scope { order('created_at ASC') }
+
   after_save :add_example_video
 
   validates :subject_id,  presence: true
