@@ -63,7 +63,7 @@ class Admin::VideosController < ApplicationController
 
 
   def video_params
-    params.require(:video).permit(:name, :link)
+    params.require(:video).permit(:name, :link, :signed_in_only)
   end
 
   def set_instance_variables  
