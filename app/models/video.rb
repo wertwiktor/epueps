@@ -30,7 +30,9 @@ class Video < ActiveRecord::Base
     name
   end
 
-
+  def signed_in_only?
+    signed_in_only
+  end
 
   protected
 
