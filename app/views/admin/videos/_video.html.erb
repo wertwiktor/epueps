@@ -1,6 +1,7 @@
 <tr>
   <td><%= video.name %></td>
   <td><%= link_to video.link %></td>
+  <td><%= video.signed_in_only ? "Tak" : "Nie" %></td>
   <td>
     <!-- TODO: Add confirmation -->
     <%= link_to "Usuń",

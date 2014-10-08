@@ -5,8 +5,9 @@
       url: video_form_url(@subject, @lesson, @video),
       html: { class: "custom-form" } do |f| %>
   
-  <%= f.input :name,    label: "Nazwa" %>
-  <%= f.input :link,    label: "Link" %>
+  <%= f.input :name,            label: "Nazwa" %>
+  <%= f.input :link,            label: "Link" %>
+  <%= f.input :signed_in_only,  label: "Tylko dla zalogowanych" %>
   <%= f.submit video_form_submit(@video),
                 class: "button button-primary" %>
   
