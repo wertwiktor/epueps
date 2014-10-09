@@ -1,7 +1,7 @@
   
 
   <!-- TODO: This needs some refactoring -->
-  <% if video.signed_in_only? %>
+  <% if video.signed_in_only? && !user_signed_in? %>
 
     <div class="video-for-signed-in-only">
       <h2>Tylko dla zalogowanych użytkowników</h2>

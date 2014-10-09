@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "Subjects", :type => :request do
   subject { page }
 
+  let!(:user) { FactoryGirl.create(:user) }
+
   let!(:subject1) { FactoryGirl.create(:subject, 
     name: "S1", 
     popularity: 3, 
@@ -136,6 +138,40 @@ RSpec.describe "Subjects", :type => :request do
             expect(page).to have_css("iframe[id='video-#{@video4.id}']")
           end
         end
+      end
+
+      describe "video for signed in only" do
+        before do
+          @video_signed_in = @lesson.videos.create!(
+            name: "signed_in",
+            link: "youtube.com/watch?v=123",
+            signed_in_only: true)
+        end
+
+        context "when user is not signed in" do
+          before do
+            visit subject_path(subject1)
+            click_link @video_signed_in
+          end
+
+          it { should have_content "Tylko dla zalogowanych" }
+          it { should have_content "(tylko dla zalogowanych)" }
+          it { should have_link "Zaloguj się" }
+          it { should have_link "Zarejestruj się" }
+        end
+
+        context "when user is signed in" do
+          before do 
+            sign_in user
+            visit subject_path(subject1)
+            click_link @video_signed_in
+          end 
+
+          it { should_not have_content "Tylko dla zalogowanych" }
+          it { should_not have_content "(tylko dla zalogowanych)" }
+          it { should_not have_link "Zaloguj się" }
+        end
+
       end
     end
   end

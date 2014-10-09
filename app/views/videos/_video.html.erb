@@ -4,7 +4,7 @@
 <%= link_to video.name, subject_path(video.lesson.subject, params: 
     {video_id: video.id}), remote: true %>
 
-<% if video.signed_in_only? %>
+<% if video.signed_in_only? && !user_signed_in? %>
    (tylko dla zalogowanych)
 <% end %>
 </li>
