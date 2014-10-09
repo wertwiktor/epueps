@@ -1,25 +1,28 @@
-<div class = 'lesson-video-container'>
   
+
+  <!-- TODO: This needs some refactoring -->
   <% if video.signed_in_only? %>
 
-    <h2>Tylko dla zalogowanych użytkowników</h2>
-    <h3>
-      <%= link_to "Zaloguj się", new_user_session_path %>
-      lub 
-      <%= link_to "Zarejestruj się", new_user_registration_path %>
-      aby obejrzeć.
-    </h3>
+    <div class="video-for-signed-in-only">
+      <h2>Tylko dla zalogowanych użytkowników</h2>
+      <h3>
+        <%= link_to "Zaloguj się", new_user_session_path %>
+        lub 
+        <%= link_to "Zarejestruj się", new_user_registration_path %>
+        aby obejrzeć.
+      </h3>
+    </div>
   
   <% else %>
 
 
-	<iframe class = 'lesson-video' 
-	  src = <%= video.embed_link %> 
-    id = <%= "video-#{video.id}" %>
-	  allowfullscreen >
-
+  <div class = 'lesson-video-container'>
+	  <iframe class = 'lesson-video' 
+	    src = <%= video.embed_link %> 
+      id = <%= "video-#{video.id}" %>
+  	  allowfullscreen >
+    </iframe>
+  </div>
   <% end %>
 
 
-</iframe>
-</div>
