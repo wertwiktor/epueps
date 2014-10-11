@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :subjects do
-      get 'deleted', on: :collection
+      get 'deleted', to: 'subjects#trash', on: :collection
 
       resources :lessons, except: [:index] do
         resources :videos, except: [:show, :index] 

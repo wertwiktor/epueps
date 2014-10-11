@@ -14,7 +14,7 @@ class Admin::SubjectsController < ApplicationController
     @subjects = SortAndFilterData.call(Subject.not_deleted, params)
   end
 
-  def deleted
+  def trash
     @subjects = SortAndFilterData.call(Subject.deleted, params)
     render 'index'
   end
