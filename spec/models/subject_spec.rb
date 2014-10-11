@@ -54,24 +54,56 @@ describe Subject do
 	describe "when intro_video_link has the right format" do
 		formats = %w[youtube.com/watch?v=f43dfaFd 
 			https://youtube.com/watch?v=3453f]
-			formats.each do |format|
-				before { @subject.intro_video_link = format }
-				it { should be_valid }
+		formats.each do |format|
+			before { @subject.intro_video_link = format }
+			it { should be_valid }
+		end
+	end
+
+	describe "when intro_video_link has wrong format" do
+		formats = %w[ youtube.com/watch?v=123das 
+		youtube.com/watch?v=123&list=PL123 
+		https://youtube.com/watch?v=123&index=1&list=1]
+
+		formats.each do |format|
+			before do
+				@subject.intro_video_link = format
+				@subject.save
+			end
+
+			it { should be_valid }
+		end
+	end
+
+	describe "destroying the subject" do
+
+		it "shouldn't change the subjects count" do
+			expect { @subject.destroy }.not_to change(Subject, :count)
+		end
+
+		describe "status" do
+			before { @subject.destroy }
+
+			it "should change to deleted" do
+				expect(@subject.status).to eq "deleted"
+			end
+		end
+	end
+
+	describe "#status" do
+
+		describe "default" do
+			it "should be 'draft'" do
+				expect(@subject.status).to eq "draft"
 			end
 		end
 
-		describe "when intro_video_link has wrong format" do
-			formats = %w[ youtube.com/watch?v=123das 
-				youtube.com/watch?v=123&list=PL123 
-				https://youtube.com/watch?v=123&index=1&list=1]
+		describe "publishing" do
+			before { @subject.publish }
 
-				formats.each do |format|
-					before do
-						@subject.intro_video_link = format
-						@subject.save
-					end
-
-					it { should be_valid }
-				end
+			it "should change the status to published" do
+				expect(@subject.status).to eq "published" 
 			end
 		end
+	end
+end
