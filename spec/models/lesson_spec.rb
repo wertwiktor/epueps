@@ -71,6 +71,20 @@ describe Lesson do
     end
   end
 
+  describe "resources method" do
+    before do
+      @lesson_test = @subject.lessons.create(name: "l2", description: "desc")
+      # delete the example video
+      @video_test = @lesson_test.videos.create(
+        name: "v2", 
+        link: "youtube.com/watch?v=123") 
+    end
+
+    it "should return all the resources" do
+      expect(@lesson_test.resources).to eq [@video_test]
+    end
+  end
+
   describe "new lesson" do
     before do
       @new_lesson = Lesson.new(name: "new", description: "desc", 
@@ -79,32 +93,12 @@ describe Lesson do
 
     end
 
-    it "should have example video" do
-      expect(@new_lesson.videos.count).to eq 1
-    end
-
     describe "after adding first new video" do
       before do
         @video1 = @new_lesson.videos.create(name: "video", 
           link: "youtube.com/watch?v=test")       
       end
 
-      it "example video should be destroyed" do
-        expect(@new_lesson.videos.count).to eq 1
-        expect(@new_lesson.videos).to include @video1
-      end
-
-      describe "adding second video" do
-        before do
-          @video2 = @new_lesson.videos.create(name: "video 2",
-            link: "youtube.com/watch?v=test2")
-        end
-
-        it "should not destroy first video" do
-          expect(@new_lesson.videos.count).to eq 2
-          expect(@new_lesson.videos).to include @video1, @video2
-        end
-      end
     end
   end
 end
