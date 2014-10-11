@@ -55,8 +55,13 @@ RSpec.describe "Subjects", :type => :request do
   end
 
   describe "info page" do
-    let!(:lesson1) { FactoryGirl.create(:lesson, 
-        subject_id: subject1.id)}
+    let!(:lesson1) do
+      FactoryGirl.create(
+        :lesson, 
+        subject_id: subject1.id)
+    end
+    let!(:video) { FactoryGirl.create(:video, lesson_id: lesson1.id) }
+    
     before { visit subject_info_path(subject1) }
 
     it { should have_title normal_title("#{subject1.name} - informacje") }
