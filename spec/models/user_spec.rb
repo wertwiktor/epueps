@@ -34,6 +34,12 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe "#to_s" do
+    it "should display user's email" do
+      expect(@user.to_s).to eq @user.email
+    end
+  end
+
   describe "when email is already in database" do
     before do
       @user2 = User.new(email: "foo@bar.com", password: "foobar123")

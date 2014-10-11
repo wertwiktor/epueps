@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     self.admin ? true : false
   end
 
-  def display_name
-    email # add name/login later
+  def to_s
+    email
   end
 end
