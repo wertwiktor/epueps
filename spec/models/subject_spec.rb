@@ -3,7 +3,8 @@ require 'rails_helper'
 describe Subject do
 
 	before do
-		@subject = Subject.create(name: "subject", 
+		@subject = Subject.create(
+			name: "subject", 
 			description: "subject description")
 	end
 
@@ -104,6 +105,27 @@ describe Subject do
 			it "should change the status to published" do
 				expect(@subject.status).to eq "published" 
 			end
+		end
+	end
+
+	describe "scopes" do
+		before do
+			@published = Subject.create(
+				name: "S1", description: "S1", status: "published")
+			@draft = Subject.create(
+				name: "S2", description: "S2", status: "draft")
+			@deleted = Subject.create(
+				name: "S3", description: "s3", status: "deleted")
+
+			@subject.destroy(true)
+		end
+
+		it "should return the right subjects" do
+
+			expect(Subject.published).to eq [@published]
+			expect(Subject.drafts).to eq [@draft]
+			expect(Subject.deleted).to eq [@deleted]
+			expect(Subject.not_deleted).to eq [@published, @draft]
 		end
 	end
 end

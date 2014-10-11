@@ -9,8 +9,12 @@ class Subject < ActiveRecord::Base
 
   friendly_id :name, use: [:slugged, :finders]
 
-  scope :popular, -> { order('popularity DESC') }
-  scope :recent,   -> { order('created_at DESC') }
+  scope :popular,     -> { order('popularity DESC') }
+  scope :recent,      -> { order('created_at DESC') }
+  scope :deleted,     -> { where(status: 'deleted') }
+  scope :published,   -> { where(status: 'published') }
+  scope :drafts,      -> { where(status: 'draft') }
+  scope :not_deleted, -> { where("status != 'deleted'") }
 
   validates :name, 
             presence: { message: "Nazwa nie może być pusta" }
@@ -39,7 +43,7 @@ class Subject < ActiveRecord::Base
 
   def destroy(permament=false)
     if permament
-      super
+      super()
     else
       self.update_attribute(:status, "deleted")
     end
