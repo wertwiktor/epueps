@@ -7,9 +7,13 @@
   		<%= link_to "Przeglądaj kursy", 
   								subjects_path, 
   								class: "button button-secondary" %>
-  		<%= link_to "Zaloguj się", 
+      <% if user_signed_in? %>
+        <%= link_to "O platformie", '#', class: "button button-primary" %>
+      <% else %>
+  		  <%= link_to "Zaloguj się", 
                   new_user_session_path,
                   class: "button button-primary" %>
+      <% end %>
 
   	</div>
   </section>

@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
 	def home
-		@splash = true unless user_signed_in?
+		@splash = true 
 		@subjects = Subject.popular.limit(3)
 	end
 
