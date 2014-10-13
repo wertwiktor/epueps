@@ -19,12 +19,25 @@ describe Subject do
 
 	describe "when name is blank" do
 		before { @subject.name = " " }
-		it { should_not be_valid }
+		it { should be_valid }
+
+		context "on publish" do
+			it "should not be valid" do
+				expect(@subject.publish).to eq false
+			end
+		end
 	end
 
 	describe "when description is blank" do
 		before { @subject.description = " " }
-		it { should_not be_valid }
+		it { should be_valid }
+
+				context "on publish" do
+			it "should not be valid" do
+				expect(@subject.publish).to eq false
+			end
+		end
+
 	end
 
 	describe "when image_name is blank" do

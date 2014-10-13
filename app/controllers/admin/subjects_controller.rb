@@ -64,10 +64,13 @@ class Admin::SubjectsController < ApplicationController
   end
 
   def publish
+    # it needs refactoring
     if @subject.publish
       flash[:success] = "Opublikowano przedmiot"
     else
-      flash[:error] = "Wystąpił błąd"
+      flash[:error] = "Wystąpiły błędy. Popraw je, a następnie opublikuj przedmiot"
+      params[:subject] = @subject
+      render 'edit' and return
     end
 
     redirect_to admin_subjects_path
