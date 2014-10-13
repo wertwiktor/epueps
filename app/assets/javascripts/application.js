@@ -23,8 +23,8 @@ $(document).ready(function() {
 		$(this).parent().animate({'opacity': '0'}, 300);
 	});
 
-  $(".alert").animate({'top': '5rem'}, 500).delay(4000).animate({
-    'opacity': '0'
+  $(".alert").animate({'top': '0rem'}, 500).delay(2000).animate({
+    'top': '-3rem'
   }, 200);
   
 
