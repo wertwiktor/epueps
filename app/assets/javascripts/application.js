@@ -20,12 +20,12 @@ $(document).ready(function() {
 	// Close-div button in alerts 
 	$(".close-div").click(function() {
 		console.log("close-div");
-		$(this).parent().animate({'top': '-4rem'}, 300);
+		$(this).parent().animate({'opacity': '0'}, 300);
 	});
 
-  $(".alert").animate({'top': '5rem'}, 500).delay(3500).animate({
-    'top': '-4rem'
-  }, 300);
+  $(".alert").animate({'top': '5rem'}, 500).delay(4000).animate({
+    'opacity': '0'
+  }, 200);
   
 
   $(".lesson>.lesson-videos").hide();

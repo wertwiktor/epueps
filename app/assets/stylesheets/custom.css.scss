@@ -220,15 +220,14 @@ h1 {
 // TODO: http://tympanus.net/Development/NotificationStyles/bar-slidetop.html for ajax reponses
 
 .alert {
-  height: 4em;
-  line-height: 4em;
-  padding: 0 2em;
+  padding: 1.5em 2em;
   position: fixed;
+  right: 2em;
   top: -4rem; 
   width: 20rem;
   z-index: 100;
 
-  background: rgba(234, 241, 153, 0.94);
+  background: rgba(233, 227, 85, 1);
   
   .close-div {
     width: 1em;
