@@ -17,11 +17,9 @@ class Subject < ActiveRecord::Base
   scope :not_deleted, -> { where("status != 'deleted'") }
 
   validates :name, 
-            presence: { message: "Nazwa nie może być pusta" },
-            on: :publish
+            presence: { message: "Nazwa nie może być pusta" }
   validates :description, 
-            presence: {message: "Opis nie może być pusty"},
-            on: :publish
+            presence: {message: "Opis nie może być pusty"}
   validates :intro_video_link, 
             format: 
               { with: VIDEO_LINK_REGEX,
