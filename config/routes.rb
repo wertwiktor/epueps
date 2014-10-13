@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :users
     resources :subjects do
       get 'deleted', to: 'subjects#trash', on: :collection
+      get 'publish', to: 'subjects#publish', on: :member
 
       resources :lessons, except: [:index] do
         resources :videos, except: [:show, :index] 

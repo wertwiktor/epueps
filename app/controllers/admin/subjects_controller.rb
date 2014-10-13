@@ -5,7 +5,7 @@ class Admin::SubjectsController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_admin
-  before_action :set_subject, only: [:show, :destroy, :edit, :update]
+  before_action :set_subject, only: [:show, :destroy, :edit, :update, :publish]
 
 
   # Add sortable table after moving sorting code to seperate class
@@ -61,6 +61,16 @@ class Admin::SubjectsController < ApplicationController
       flash.now[:error] = "Wystąpił nieznany błąd. Spróbuj ponownie później"
       render 'edit'
     end
+  end
+
+  def publish
+    if @subject.publish
+      flash[:success] = "Opublikowano przedmiot"
+    else
+      flash[:error] = "Wystąpił błąd"
+    end
+
+    redirect_to admin_subjects_path
   end
 
 

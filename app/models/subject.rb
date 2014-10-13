@@ -17,16 +17,17 @@ class Subject < ActiveRecord::Base
   scope :not_deleted, -> { where("status != 'deleted'") }
 
   validates :name, 
-            presence: { message: "Nazwa nie może być pusta" }
+            presence: { message: "Nazwa nie może być pusta" },
+            on: :publish
   validates :description, 
-            presence: {message: "Opis nie może być pusty"}
+            presence: {message: "Opis nie może być pusty"},
+            on: :publish
   validates :intro_video_link, 
             format: 
               { with: VIDEO_LINK_REGEX,
                 message: "Niepoprawny format"
               },
             unless: "intro_video_link.blank?"
-
   
 
   def image_src
@@ -39,6 +40,10 @@ class Subject < ActiveRecord::Base
 
   def publish
     self.update_attribute(:status, "published")
+  end
+
+  def published?
+    status == "published"
   end
 
   def destroy(permament=false)
