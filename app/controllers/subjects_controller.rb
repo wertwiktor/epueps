@@ -16,7 +16,7 @@ class SubjectsController < ApplicationController
   	@subject = Subject.find(params[:id])
   	@lessons = @subject.lessons.includes(:videos).all
     
-    # TODO: Load from user profile
+    # TODO: Load from user profile using hstore
 
     @current_video = current_video(@subject)
 
