@@ -35,6 +35,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'factory_girl_rails'
 gem 'friendly_id', '~> 5.0.0'
+gem 'redcarpet'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
