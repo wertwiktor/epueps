@@ -7,6 +7,7 @@ gem 'rails', '4.1.1'
 group :development, :test do
   gem 'rspec-rails', '~>3.0.0'
   gem 'bullet'
+  gem 'faker'
 end
 
 group :development do
