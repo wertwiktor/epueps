@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     match '/', to: 'admin_pages#home', via: :get
   end
 
+  resources :articles
+
 end
