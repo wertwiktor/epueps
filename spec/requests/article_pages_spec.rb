@@ -15,5 +15,12 @@ RSpec.describe "ArticlePages", :type => :request do
 
     it { should have_title normal_title("Wszystkie artykuły") }
   end
+
+  describe "show" do
+    before { visit article_path(article1) }
+
+    it { should have_content article1.title }
+    it { should have_content article1.body }
+  end
 end
 
