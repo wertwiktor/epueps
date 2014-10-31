@@ -109,5 +109,18 @@ RSpec.describe 'ArticlePages', type: :request do
         end
       end
     end
+
+    describe '#destroy' do
+      before do
+        visit admin_articles_path 
+        click_link 'Usuń'
+      end
+
+      it 'should delete the article' do
+        expect(page).to have_content 'Usunięto artykuł'
+        expect(page).to have_content 'Wszystkie artykuły'
+        expect(page).not_to have_content article1.title
+      end
+    end
   end
 end

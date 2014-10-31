@@ -4,6 +4,7 @@ class Admin::ArticlesController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_admin
+  before_action :set_article, only: [:edit, :update, :destroy]
 
   def index
     @articles = SortAndFilterData.call(Article.includes(:user), params)
@@ -25,13 +26,7 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
-
   def update
-    @article = Article.find(params[:id])
-
     if @article.update_attributes(article_params)
       flash[:success] = 'Zapisano zmiany'
       redirect_to admin_articles_path
@@ -41,9 +36,23 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    if @article.destroy
+      flash[:success] = 'Usunięto artykuł'
+    else
+      flash[:success] = 'Wystąpił błąd. Spróbuj ponownie później.'
+    end
+
+    redirect_to admin_articles_path
+  end
+
   private
 
   def article_params
     params.require(:article).permit(:title, :body, :user_id)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 end
