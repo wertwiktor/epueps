@@ -32,9 +32,10 @@
 								class: "button button-secondary" %>
 	</section>
 
-	<section id="home-articles">
-		<div class="container">
-			<h1>Najnowsze artykuły</h1>
+	<section id="home-articles" class="articles">
+		<h1>Najnowsze artykuły</h1>
+    <div class="container">
+      <%= render @articles %>
 		</div>
 			
 	</section>

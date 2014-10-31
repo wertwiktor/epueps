@@ -1,0 +1,11 @@
+<tr>
+  <td><%= article.short_title %></td>
+  <td><%= article.user %></td>
+  <td><%= article.created_at %></td>
+  <td><%= link_to 'Usuń', 
+                  admin_article_path(article),
+                  method: :delete %>
+      <%= link_to 'Edytuj',
+                  edit_admin_article_path(article) %>
+  </td>
+</tr>

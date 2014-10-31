@@ -8,13 +8,18 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+
     resources :subjects do
       resources :lessons, except: [:index] do
         resources :videos, except: [:show, :index] 
       end
     end
 
+    resources :articles, except: [:show]
+
     match '/', to: 'admin_pages#home', via: :get
   end
+
+  resources :articles, only: [:new, :create, :show, :index]
 
 end

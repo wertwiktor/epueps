@@ -1,20 +1,20 @@
-<% provide :title, "Wszystkie przedmioty" %>
+<% provide :title, 'Wszystkie przedmioty' %>
 
-<section class="admin-panel subject-index">
+<section class='admin-panel subject-index'>
   <h1>Wszystkie przedmioty</h1>
 
-  <div class = "subject-actions">
-    <%= link_to "Nowy przedmiot", new_admin_subject_path, 
-        class: "button button-secondary" %>
+  <div class = 'subject-actions'>
+    <%= link_to 'Nowy przedmiot', new_admin_subject_path, 
+        class: 'button button-secondary' %>
   </div>
 
-<table class ="primary-table">
+<table class ='primary-table'>
   <thead>
     <tr>
-      <th><%= sortable @subjects, "name", "Nazwa" %></th>
-      <th><%= sortable @subjects, "lessons_count", "Liczba lekcji" %></th>
-      <th><%= sortable @subjects, "created_at", "Data dodania" %></th>
-      <th><%= sortable @subjects, "popularity", "Popularność" %></th>
+      <th><%= sortable @subjects, 'name', 'Nazwa' %></th>
+      <th><%= sortable @subjects, 'lessons_count', 'Liczba lekcji' %></th>
+      <th><%= sortable @subjects, 'created_at', 'Data dodania' %></th>
+      <th><%= sortable @subjects, 'popularity', 'Popularność' %></th>
       <th>Akcje</th>
     </tr>
   </thead>

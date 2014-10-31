@@ -25,5 +25,11 @@ FactoryGirl.define do
     end
   end 
 
+  factory :article do
+    title          "Title"
+    body           "Body"
+    user_id        1
+  end
+
 
 end

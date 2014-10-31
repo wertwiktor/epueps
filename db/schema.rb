@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008090158) do
+ActiveRecord::Schema.define(version: 20141031212326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "state"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -48,7 +57,8 @@ ActiveRecord::Schema.define(version: 20141008090158) do
     t.integer  "popularity",       default: 0
     t.string   "intro_video_link"
     t.string   "slug"
-    t.integer  "lessons_count",    default: 0, null: false
+    t.integer  "lessons_count",    default: 0,       null: false
+    t.string   "status",           default: "draft"
   end
 
   add_index "subjects", ["slug"], name: "index_subjects_on_slug", unique: true, using: :btree

@@ -5,8 +5,10 @@ describe "StaticPages" do
 	subject { page }
   
   describe "Home page" do
+    let!(:user)     { FactoryGirl.create(:user) } 
   	let!(:subject1) { FactoryGirl.create(:subject, popularity: 3) }
-  	let!(:subject2) { FactoryGirl.create(:subject, popularity: 5) }
+    let!(:subject2) { FactoryGirl.create(:subject, popularity: 5) }
+    let!(:article)  { FactoryGirl.create(:article, user_id: user.id ) }
 
 
   	before { visit root_path }
@@ -23,6 +25,10 @@ describe "StaticPages" do
   	it { should have_content subject1.description }
   	it { should have_selector("img") }
   	it { should have_link "Zobacz kurs" }
+
+    it { should have_content "Najnowsze artykuły" }
+    it { should have_content article.title }
+    it { should have_content article.body }
 
   	it "should have subjects ordered by popularity" do
   		expect(Subject.popular).to eq [subject2, subject1]

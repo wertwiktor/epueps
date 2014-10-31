@@ -11,9 +11,9 @@ module SubjectsHelper
 
   def subject_form_submit(subject)
     if subject.new_record?
-      "Dodaj przedmiot"
+      'Dodaj przedmiot'
     else
-      "Zapisz zmiany"
+      'Zapisz zmiany'
     end
   end
 
