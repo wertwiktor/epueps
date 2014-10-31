@@ -37,10 +37,21 @@ RSpec.describe Article, :type => :model do
   end
 
   describe '#short_title' do
-    before { @article.title = "some long title for this post" }
 
-    it "should show only 5 words" do
-      expect(@article.short_title).to eq "some long title for this..."
+    describe 'when title is longer than 5 words' do
+      before { @article.title = "some long title for this post" }
+
+      it "should show only 5 words" do
+        expect(@article.short_title).to eq "some long title for this..."
+      end
+    end
+
+    describe 'when title is not longer than 5 words' do
+      before { @article.title = 'short title' }
+
+      it 'should show unchanged title' do
+        expect(@article.short_title).to eq 'short title'
+      end
     end
   end
 end

@@ -16,6 +16,10 @@ class Article < ActiveRecord::Base
 
   def short_title
     # TODO: It needs some refactoring
-    title.split(' ').first(5).join(' ').concat('...')
+    short = title.split(' ')
+
+    return title if short.size < 5
+
+    short.first(5).join(' ').concat('...')
   end
 end
