@@ -35,5 +35,13 @@ RSpec.describe Article, :type => :model do
       expect(@article.body_text).to eq "<h1>Header</h1>\n"
     end
   end
+
+  describe '#short_title' do
+    before { @article.title = "some long title for this post" }
+
+    it "should show only 5 words" do
+      expect(@article.short_title).to eq "some long title for this..."
+    end
+  end
 end
 

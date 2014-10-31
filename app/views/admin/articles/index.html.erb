@@ -1,0 +1,24 @@
+<% provide :title, 'Wszystkie artykuły' %>
+
+<section class="admin-panel">
+  <h1>Wszystkie artykuły</h1>
+
+  <div class="article-actions">
+    <%= link_to 'Nowy artykuł', new_admin_article_path,
+          class: 'button button-secondary' %>
+  </div>
+
+  <table class="primary-table">
+    <thead>
+      <tr>
+        <th><%= sortable @articles, 'title', 'Tytuł' %></th>
+        <th><%= sortable @articles, 'user', 'Użytkownik' %></th>
+        <th><%= sortable @articles, 'created_at', 'Data dodania' %></th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @articles %>
+    </tbody>
+  </table>
+</section>

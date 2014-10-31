@@ -13,4 +13,9 @@ class Article < ActiveRecord::Base
 
     markdown.render(body)
   end
+
+  def short_title
+    # TODO: It needs some refactoring
+    title.split(' ').first(5).join(' ').concat('...')
+  end
 end

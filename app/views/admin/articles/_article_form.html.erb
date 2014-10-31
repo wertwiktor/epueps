@@ -1,0 +1,9 @@
+
+<%= simple_form_for @article,
+                    url: article_form_url(@article),
+                    html: { class: 'custom-form'} do |f| %>
+  <%= f.input :title,  label: 'Tytuł' %>
+  <%= f.input :body,   label: 'Treść' %>
+  <%= f.submit  article_form_submit(@article), 
+                class: 'button button-primary' %>
+<% end %>
