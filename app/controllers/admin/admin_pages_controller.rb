@@ -1,5 +1,4 @@
 class Admin::AdminPagesController < ApplicationController
-
   include Admin
 
   layout 'admin'

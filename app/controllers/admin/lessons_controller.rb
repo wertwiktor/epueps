@@ -1,5 +1,4 @@
 class Admin::LessonsController < ApplicationController
-
   include CurrentVideo
   include Admin
 
@@ -7,8 +6,6 @@ class Admin::LessonsController < ApplicationController
 
   before_action :authenticate_admin
   before_action :set_lesson, only: [:show, :destroy, :edit, :update]
-  
-
 
   def new
     @lesson = Lesson.new
@@ -20,14 +17,10 @@ class Admin::LessonsController < ApplicationController
     @lesson = @subject.lessons.build(lesson_params)
 
     if @lesson.save
-      flash[:success] = "Dodano lekcję"
+      flash[:success] = 'Dodano lekcję'
       redirect_to admin_subject_path(@subject)
     else
-      if @lesson.errors.any?
-        flash.now[:error] = "Wystąpiły błędy w formularzu. Liczba błędów: #{@lesson.errors.count}" 
-      else
-        flash.now[:error] = "Nieznany błąd. Spróbuj ponownie później"
-      end
+      flash[:error] = 'Wystąpił błąd'
       render 'new'
     end
   end
@@ -40,10 +33,10 @@ class Admin::LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
 
     if @lesson.destroy
-      flash[:success] = "Usunięto lekcję"
+      flash[:success] = 'Usunięto lekcję'
       redirect_to admin_subject_path(@lesson.subject)
     else
-      flash[:error] = "Wystąpił błąd. Spróbuj ponownie później"
+      flash[:error] = 'Wystąpił błąd. Spróbuj ponownie później'
     end
   end
 
@@ -52,13 +45,13 @@ class Admin::LessonsController < ApplicationController
 
   def update
     if @lesson.update_attributes(lesson_params)
-      flash[:success] = "Zaktualizowano lekcję"
+      flash[:success] = 'Zaktualizowano lekcję'
       redirect_to admin_subject_path(@subject)
     elsif @lesson.errors.any?
-      flash.now[:error] = "Wystąpiły błędy w formularzu"
+      flash.now[:error] = 'Wystąpiły błędy w formularzu'
       render 'edit'
     else
-      flash.now[:error] = "Wystąpił nieznany błąd. Spróbuj ponownie później"
+      flash.now[:error] = 'Wystąpił nieznany błąd. Spróbuj ponownie później'
       render 'edit'
     end
   end
@@ -73,5 +66,4 @@ class Admin::LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @subject = @lesson.subject
   end
-
 end
