@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'ArticlePages', :type => :request do
+RSpec.describe 'ArticlePages', type: :request do
   
   let!(:admin) { FactoryGirl.create(:admin) }
   let!(:article1) { FactoryGirl.create(:article, user_id: admin.id) }
@@ -46,14 +46,14 @@ RSpec.describe 'ArticlePages', :type => :request do
       it { should have_button 'Dodaj artykuł' }
 
       describe 'adding a new article' do
-        before do 
+        before do
           fill_in 'Tytuł',    with: 'Title'
           fill_in 'Treść',    with: 'Content'
         end
 
         it 'should change the article count' do
-          expect { click_button 'Dodaj artykuł' }.
-            to change(Article, :count).by(1)
+          expect { click_button 'Dodaj artykuł' }
+            .to change(Article, :count).by(1)
         end
 
         it 'should show add the article' do
