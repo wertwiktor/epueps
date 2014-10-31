@@ -25,6 +25,22 @@ class Admin::ArticlesController < ApplicationController
     end
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update_attributes(article_params)
+      flash[:success] = 'Zapisano zmiany'
+      redirect_to admin_articles_path
+    else
+      flash[:error] = 'Wystąpił błąd'
+      render 'edit'
+    end
+  end
+
   private
 
   def article_params
