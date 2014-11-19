@@ -4,7 +4,11 @@
   <td><%= subject.lessons_count %></td>
   <td><%= subject.created_at.strftime("%Y-%m-%d") %></td>
   <td><%= subject.popularity %></td>
-  <td><%= subject.published? ? "Opublikowany" : "Szkic" %></td>
+  <% unless subject.deleted? %>
+    <td><%= subject.published? ? "Opublikowany" : "Szkic" %></td>
+  <% else %>
+    <td>Usunięty</td>
+  <% end %>
   <td>
     <!-- TODO: Add confirmation -->
     <%= link_to "Usuń", 
@@ -13,6 +17,6 @@
     <%= link_to "Edytuj", 
                 edit_admin_subject_path(subject) %>
     <%= link_to "Opublikuj",
-          publish_admin_subject_path(subject) unless subject.published? %>
+          publish_admin_subject_path(subject) unless  subject.published? ||                                          subject.deleted? %>
   </td>
 </tr>

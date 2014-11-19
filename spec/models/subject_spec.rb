@@ -100,8 +100,19 @@ describe Subject do
 
 			it "should change to deleted" do
 				expect(@subject.status).to eq "deleted"
+				expect(@subject.deleted?).to eq true
 			end
 		end
+
+		describe "destroy permament" do
+			before do
+				@subject.destroy
+			end
+
+			it "should destroy the subject" do
+				expect { @subject.destroy }.to change(Subject, :count).by(-1)
+			end
+		end	
 	end
 
 	describe "#status" do

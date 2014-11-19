@@ -49,11 +49,15 @@ class Subject < ActiveRecord::Base
   end
 
   def destroy(permament=false)
-    if permament
+    if permament || status == "deleted"
       super()
     else
       self.update_attribute(:status, "deleted")
     end
+  end
+
+  def deleted?
+    status == "deleted"
   end
 
   def increase_popularity
