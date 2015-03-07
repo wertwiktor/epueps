@@ -2,8 +2,8 @@
 lock '3.3.5'
 
 set :application, 'rails'
-set :repo_url, 'https://github.com/mkaszubowski/epueps.git'
-set :deploy_to, '/home/rails'
+set :repo_url, 'https://github.com/wertwiktor/epueps.git'
+set :deploy_to, '/home/deploy'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
