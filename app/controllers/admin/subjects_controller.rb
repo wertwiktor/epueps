@@ -4,12 +4,17 @@ class Admin::SubjectsController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_admin
-  before_action :set_subject, only: [:show, :destroy, :edit, :update]
+  before_action :set_subject, only: [:show, :destroy, :edit, :update, :publish]
 
   # Add sortable table after moving sorting code to seperate class
 
   def index
-    @subjects = SortAndFilterData.call(Subject, params)
+    @subjects = SortAndFilterData.call(Subject.not_deleted, params)
+  end
+
+  def trash
+    @subjects = SortAndFilterData.call(Subject.deleted, params)
+    render 'index'
   end
 
   def destroy
@@ -47,6 +52,20 @@ class Admin::SubjectsController < ApplicationController
       render 'edit'
     end
   end
+
+  def publish
+    # it needs refactoring
+    if @subject.publish
+      flash[:success] = "Opublikowano przedmiot"
+    else
+      flash[:error] = "Wystąpiły błędy. Popraw je, a następnie opublikuj przedmiot"
+      params[:subject] = @subject
+      render 'edit' and return
+    end
+
+    redirect_to admin_subjects_path
+  end
+
 
   private
 

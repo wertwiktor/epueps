@@ -1,9 +1,11 @@
 <% provide :title, "Nowa lekcja" %>
 
-<h2><%= @subject %></h2>
-<h1 class = "center">Nowa lekcja</h1>
+<section class="admin-panel">
 
-<div id = "new-lesson-form">
-  <%= render 'admin/lessons/lesson_form' %>
+  <h2><%= link_to @subject %></h2>
+  <h1 class = "center">Nowa lekcja</h1>
+
+  <div id = "new-lesson-form">
+    <%= render 'admin/lessons/lesson_form' %>
+  </div>
 </div>
-

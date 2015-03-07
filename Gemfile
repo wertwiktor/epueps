@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
-#ruby-gemset=railstutorial_rails_4_0
+ruby '2.2.0'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.2.0'
 
 group :development, :test do
   gem 'rspec-rails', '~>3.0.0'
@@ -37,6 +36,10 @@ gem 'simple_form'
 gem 'factory_girl_rails'
 gem 'friendly_id', '~> 5.0.0'
 gem 'redcarpet'
+
+gem 'capistrano', '~> 3.3.0'
+gem 'capistrano-rvm',   '~> 0.1', require: false
+gem 'capistrano-bundler', '~> 1.1.2'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

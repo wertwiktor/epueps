@@ -67,10 +67,14 @@ RSpec.describe 'AdminSubjectPages', :type => :request do
               it { should have_content /S1.*S2/ }
             end
           end
-
-
       end
 
+      describe "publishing the subject" do
+        before { first(:link, "Opublikuj").click }
+
+        it { should have_content "Opublikowano przedmiot" }
+        it { should have_content "Opublikowany" }
+      end
     end
   end
 

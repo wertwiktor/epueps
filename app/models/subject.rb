@@ -9,19 +9,25 @@ class Subject < ActiveRecord::Base
 
   friendly_id :name, use: [:slugged, :finders]
 
-  scope :popular, -> { order('popularity DESC') }
-  scope :recent,   -> { order('created_at DESC') }
+  scope :popular,     -> { order('popularity DESC') }
+  scope :recent,      -> { order('created_at DESC') }
+  scope :deleted,     -> { where(status: 'deleted') }
+  scope :published,   -> { where(status: 'published') }
+  scope :drafts,      -> { where(status: 'draft') }
+  scope :not_deleted, -> { where("status != 'deleted'") }
 
-  validates :name,  presence: 
-                  { message: "Nazwa nie może być pusta" }
-  validates :description, presence: 
-                  {message: "Opis nie może być pusty"}
-  validates :intro_video_link, format: 
-                  { with: VIDEO_LINK_REGEX,
-                    message: "Niepoprawny format"
-                  },
+  validates :name, 
+            presence: { message: "Nazwa nie może być pusta" },
+            on: :publish
+  validates :description, 
+            presence: {message: "Opis nie może być pusty"},
+            on: :publish
+  validates :intro_video_link, 
+            format: 
+              { with: VIDEO_LINK_REGEX,
+                message: "Niepoprawny format"
+              },
             unless: "intro_video_link.blank?"
-
   
 
   def image_src
@@ -30,6 +36,28 @@ class Subject < ActiveRecord::Base
     else
       "subjects/subject-#{self.id}.jpg"
     end
+  end
+
+  def publish
+    return false unless self.save(context: :publish)
+    
+    self.update_attribute(:status, "published")
+  end
+
+  def published?
+    status == "published"
+  end
+
+  def destroy(permament=false)
+    if permament || status == "deleted"
+      super()
+    else
+      self.update_attribute(:status, "deleted")
+    end
+  end
+
+  def deleted?
+    status == "deleted"
   end
 
   def increase_popularity

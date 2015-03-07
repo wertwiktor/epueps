@@ -11,7 +11,7 @@ class ShowAllSubjects
 
   def call
     save_current_scope
-    scope == "popular" ? Subject.popular : Subject.recent
+    scope == "popular" ? Subject.published.popular : Subject.published.recent
   end
 
   private
